@@ -1,0 +1,10 @@
+#!/bin/sh
+
+NOMBRE=$1
+
+echo "# $NOMBRE" >> README.md
+git init
+git add README.md
+git commit -m "init"
+git remote add origin https://github.com/dhasane/"$NOMBRE.git"
+git push -u origin master

@@ -1,0 +1,40 @@
+
+[bar/thebar]
+
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 27
+;radius = 6.0
+fixed-center = true
+
+;background = ${colors.transparency}
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+;border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = fixed:pixelsize=10;1
+
+;background = ${colors.background}
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = wuncon siji:pixelsize=10;1
+
+modules-left = i3 wlan windowtitle
+modules-center = date
+modules-right = filesystemroot filesystem eth memory cpu battery
+
+tray-position = right
+tray-padding = 2
+
+
+; vim:ft=dosini

@@ -1,0 +1,213 @@
+*** STARTING NEW GAME ***
+Generating world using parameter set CREATE WORLD NOW = 4333333
+ Seed: CS1953X16gfQRxDyumoD
+ History Seed: yIjJcaxjVOlVgYWZoEQi
+ Name Seed: gr0KcS6K2gimFDvhdibw
+ Creature Seed: sAFMW0l8yvgUevcTBUZz
+*** STARTING NEW GAME ***
+Generating world using parameter set CREATE WORLD NOW = 4134315
+ Seed: kcKU0i2GUuKi0AsiiUG4
+ History Seed: CuuG2IEayCyUeO8UswaC
+ Name Seed: gggWge0Ay2OK68MyCQKK
+ Creature Seed: SSewcYCKKYIq4kSWEEqM
+** Starting New Outpost **
+*** STARTING NEW GAME ***
+** Loading Fortress **
+*** STARTING NEW GAME ***
+** Loading Fortress **
+Stukos Uthmikk–buk has become a Miner.
+The weather has cleared.
+It has started raining.
+The weather has cleared.
+It is now summer.
+Stukos Uthmikk–buk, Miner cancels Fertilize Field: Needs potash.
+Dastot Shecedlogem, Jeweler cancels Fertilize Field: Needs potash.
+x2
+x3
+x4
+x5
+x6
+x7
+x8
+x9
+x10
+It has started raining.
+Stukos Uthmikk–buk, Miner cancels Fertilize Field: Needs potash.
+x2
+x3
+x4
+x5
+x6
+x7
+x8
+x9
+x10
+x11
+x12
+The weather has cleared.
+*** STARTING NEW GAME ***
+** Loading Fortress **
+*** STARTING NEW GAME ***
+** Loading Fortress **
+It has started raining.
+Stukos Uthmikk–buk, Miner cancels Plant Seeds: Needs plump helmet spawn.
+The weather has cleared.
+It has started raining.
+Some migrants have arrived.
+The weather has cleared.
+It has started raining.
+*** STARTING NEW GAME ***
+** Loading Fortress **
+Urist L„rimoslan, Stoneworker cancels Construct rock Throne: Needs non-economic hard rock.
+Urist L„rimoslan, Stoneworker cancels Construct rock Table: Needs non-economic hard rock.
+Dastot Shecedlogem has become a Planter.
+The weather has cleared.
+It has started raining.
+You have struck limonite!
+You have struck tetrahedrite!
+Autumn has come.
+You have struck chrysoprase!
+You have struck bituminous coal!
+You have struck red tourmaline!
+You have struck bauxite!
+*** STARTING NEW GAME ***
+** Loading Fortress **
+*** STARTING NEW GAME ***
+*** STARTING NEW GAME ***
+*** STARTING NEW GAME ***
+*** STARTING NEW GAME ***
+** Loading Fortress **
+*** STARTING NEW GAME ***
+** Loading Fortress **
+** Loading Fortress **
+** Loading Fortress **
+*** STARTING NEW GAME ***
+** Loading Fortress **
+*** STARTING NEW GAME ***
+** Loading Fortress **
+You have struck gypsum!
+** Loading Fortress **
+The outpost liaison Etur Astodlolok from Rinulmafol has arrived.
+A caravan from Rinulmafol has arrived.
+Merchants have arrived and are unloading their goods.
+You have struck tiger iron!
+You have struck brimstone!
+The weather has cleared.
+You have struck morion!
+It has started raining.
+You have struck white jade!
+Some migrants have arrived.
+You have struck white jade!
+The weather has cleared.
+You have struck hematite!
+You have struck morion!
+The merchants from Rinulmafol will be leaving soon.
+It has started raining.
+Kogan Imeshdoren, Weaponsmith cancels Fertilize Field: Needs potash.
+Medtob Kodorzon, Clothier cancels Fertilize Field: Needs potash.
+Mafol Farashkogan, Fish Cleaner cancels Fertilize Field: Needs potash.
+Kogan Imeshdoren, Weaponsmith cancels Fertilize Field: Needs potash.
+Medtob Kodorzon, Clothier cancels Fertilize Field: Needs potash.
+Mafol Farashkogan, Fish Cleaner cancels Fertilize Field: Needs potash.
+Kogan Imeshdoren, Weaponsmith cancels Fertilize Field: Needs potash.
+Medtob Kodorzon, Clothier cancels Fertilize Field: Needs potash.
+Mafol Farashkogan, Fish Cleaner cancels Fertilize Field: Needs potash.
+Kogan Imeshdoren, Weaponsmith cancels Fertilize Field: Needs potash.
+Medtob Kodorzon, Clothier cancels Fertilize Field: Needs potash.
+Mafol Farashkogan, Fish Cleaner cancels Fertilize Field: Needs potash.
+Kogan Imeshdoren, Weaponsmith cancels Fertilize Field: Needs potash.
+Medtob Kodorzon, Clothier cancels Fertilize Field: Needs potash.
+Mafol Farashkogan, Fish Cleaner cancels Fertilize Field: Needs potash.
+Kogan Imeshdoren, Weaponsmith cancels Fertilize Field: Needs potash.
+Medtob Kodorzon, Clothier cancels Fertilize Field: Needs potash.
+Mafol Farashkogan, Fish Cleaner cancels Fertilize Field: Needs potash.
+Medtob Kodorzon, Clothier cancels Fertilize Field: Needs potash.
+Mafol Farashkogan, Fish Cleaner cancels Fertilize Field: Needs potash.
+Dastot Shecedlogem, Planter cancels Fertilize Field: Needs potash.
+Mafol Farashkogan, Fish Cleaner cancels Fertilize Field: Needs potash.
+Dastot Shecedlogem, Planter cancels Fertilize Field: Needs potash.
+The merchants from Rinulmafol have embarked on their journey.
+Stukos Uthmikk–buk, Miner cancels Extract from Plants: Needs unrotten extract-bearing plant plants.
+You have struck saltpeter!
+Kogan Imeshdoren, Weaponsmith cancels Extract from Plants: Needs unrotten extract-bearing plant plants.
+Sigun Zonatzul, Woodworker cancels Extract from Plants: Needs unrotten extract-bearing plant plants.
+You have struck bloodstone!
+You have struck milk quartz!
+The weather has cleared.
+You have struck bituminous coal!
+You have struck limonite!
+You have struck smoky quartz!
+Sigun Zonatzul, Woodworker cancels Brew drink from plant: Needs unrotten DRINK_MAT-producing plants.
+It has started raining.
+You have struck bauxite!
+The weather has cleared.
+You have struck brown jasper!
+The Stray Cow Calf (Tame) has been found, starved to death.
+You have struck lignite!
+There is nothing to catch in the southeastern swamps.
+There is nothing to catch in the western swamps.
+Winter is upon you.
+Sigun Zonatzul, Woodworker cancels Extract from Plants: Needs unrotten extract-bearing plant plants.
+It has started raining.
+You have struck jet!
+You have struck pyrite!
+There is nothing to catch in the southeastern swamps.
+You have struck native platinum!
+There is nothing to catch in the western swamps.
+You have struck pyrite!
+You have struck rose quartz!
+You have struck aventurine!
+You have struck hematite!
+The weather has cleared.
+You have struck milk quartz!
+Medtob Kodorzon, Clothier cancels Brew drink from plant: Needs unrotten DRINK_MAT-producing plants.
+Mafol Farashkogan, Fish Cleaner cancels Brew drink from plant: Needs unrotten DRINK_MAT-producing plants.
+Mafol Farashkogan, Fish Cleaner cancels Brew drink from plant: Needs empty food storage item.
+You have struck bauxite!
+You have struck ruby!
+You have struck picture jasper!
+You have struck pyrite!
+Dastot Shecedlogem, Planter cancels Plant Seeds: Needs plump helmet spawn.
+You have struck precious fire opal!
+You have struck blue jade!
+It has started raining.
+Fikod K†tƒkducim, expedition leader cancels Update Stockpile Records: Need office.
+You have struck morion!
+You have struck hematite!
+*** STARTING NEW GAME ***
+*** STARTING NEW GAME ***
+*** STARTING NEW GAME ***
+** Loading Fortress **
+*** STARTING NEW GAME ***
+** Loading Fortress **
+*** STARTING NEW GAME ***
+*** STARTING NEW GAME ***
+** Loading Fortress **
+*** STARTING NEW GAME ***
+** Loading Fortress **
+*** STARTING NEW GAME ***
+*** STARTING NEW GAME ***
+** Loading Fortress **
+You have struck limonite!
+Mafol Farashkogan, Fish Cleaner cancels Plant Seeds: Needs plump helmet spawn.
+The weather has cleared.
+You have struck tetrahedrite!
+You have struck pink tourmaline!
+Fikod K†tƒkducim has become a expedition leader.
+You have struck garnierite!
+You have struck citrine!
+The Stray Bull Calf (Tame) has been found, starved to death.
+It has started raining.
+The weather has cleared.
+Spring has arrived!
+You have struck microcline!
+x2
+You have struck bituminous coal!
+You have struck olivine!
+You have struck native gold!
+Id Stƒkudgitnuk, Spinner cancels Drink: Water source contaminated.
+It has started raining.
+** Loading Fortress **
+** Loading Fortress **
+*** STARTING NEW GAME ***
+** Loading Fortress **

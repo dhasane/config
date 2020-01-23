@@ -1,0 +1,387 @@
+
+#   iiii   333333333333333
+#  i::::i 3:::::::::::::::33
+#   iiii  3::::::33333::::::3
+#         3333333     3:::::3
+# iiiiiii             3:::::3
+# i:::::i             3:::::3
+#  i::::i     33333333:::::3
+#  i::::i     3:::::::::::3
+#  i::::i     33333333:::::3
+#  i::::i             3:::::3
+#  i::::i             3:::::3
+#  i::::i             3:::::3
+# i::::::i3333333     3:::::3
+# i::::::i3::::::33333::::::3
+# i::::::i3:::::::::::::::33
+# iiiiiiii 333333333333333
+
+
+# Please see
+# https://i3wm.org/docs/userguide.html
+# for a complete reference!
+
+#gaps inner all set 20
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 10
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+#thin borders
+hide_edge_borders none
+
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+new_window pixel 1
+new_float normal
+
+workspace_layout tabbed
+
+title_align center
+
+#################################
+# binds
+#################################
+
+# change borders
+#bindsym $mod+u border none
+#bindsym $mod+y border pixel 1
+
+# moverse entre dos espacios de trabajo
+# bindsym $mod+Tab workspace back_and_forth
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec $TERM
+# bindsym $mod+mod1 exec $TERM
+bindsym $mod+c exec $TERM
+#bindsym $mod+Return exec st -e tmux new -A -s Init
+
+# saltar a ventana urgente
+bindsym $mod+u [urgent=latest] focus
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+#bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec i3-dmenu-desktop
+bindsym $mod+d exec rofi -show drun -theme sidetab -font "monoid regular 10"
+bindsym $mod+Shift+d exec rofi -show run -theme sidetab -font "monoid regular 10"
+# bindsym $mod+g exec rofi -show window -theme oxide -font "monoid regular 10" # me gusta este tema
+bindsym $mod+g exec --no-startup-id "~/.config/i3/scripts/mover.sh"
+bindsym $mod+Shift+g exec --no-startup-id "~/.config/i3/scripts/move_to.sh"
+# bindsym $mod+Control+1 exec --no-startup-id /path/to/script.py $ws1
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+z focus left
+bindsym $mod+x focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+Shift+z move left
+bindsym $mod+Shift+x move right
+
+# split orientation
+# bindsym $mod+v split toggle
+# bindsym $mod+c split horizontal
+bindsym $mod+t       split h
+bindsym $mod+Shift+t split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+bindsym $mod+w layout toggle tabbed stacking 
+# split
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent or child container
+# bindsym $mod+a focus parent
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+Shift+0 exit
+
+#################################
+# workspaces
+#################################
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+# bindsym $mod+1 workspace number 1
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+
+
+#################################
+# modos
+#################################
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+	# These bindings trigger as soon as you enter the resize mode
+
+	# Pressing left will shrink the window’s width.
+	# Pressing right will grow the window’s width.
+	# Pressing up will shrink the window’s height.
+	# Pressing down will grow the window’s height.
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
+
+	# same bindings, but for the arrow keys
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
+
+	# back to normal: Enter or Escape or $mod+r
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+# set $music_mode (k)play/pause, (l)next, (j)previous, (r)andom, (shift+r)repeat
+# # trabajo en proceso
+# mode "$music_mode" {
+#
+#     bindsym k exec --no-startup-id mpc toggle
+#     bindsym j exec --no-startup-id mpc prev
+#     bindsym l exec --no-startup-id mpc next
+#     bindsym r exec --no-startup-id mpc random
+#
+#     # este aun no sirve
+#     bindsym c exec --no-startup-id "info=$(mpc) ; notify-send $info"
+#
+#     bindsym Ctrl+r exec --no-startup-id mpc repeat
+#
+#     # back to normal: Enter or Escape or $mod+r
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
+#
+# bindsym $mod+m mode "$music_mode"
+
+set $web_mode (c)argar, guardar (t)odo
+mode "$web_mode" {
+
+    # guardar todo
+	bindsym t mode "default" ; exec --no-startup-id ~/scripts/paginas/guardar.sh
+	# cargar
+    bindsym c mode "default" ; exec --no-startup-id ~/scripts/paginas/cargar.sh
+
+	# back to normal: Enter or Escape or $mod+r
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+bindsym $mod+p mode "$web_mode"
+
+################
+# colores
+################
+
+# colores
+set_from_resource $prim i3wm.color0 #002b36
+set_from_resource $sec i3wm.color15 #fdf6e3
+
+set_from_resource $tir i3wm.color7 #ffffff
+
+set_from_resource $texto i3wm.color4 #d33682
+set_from_resource $urgente i3wm.color9 #d33682
+
+
+# class                 border  backgr. text    indicator child_border
+client.focused          $sec	$prim 	$sec 	$tir	  $sec
+# client.focused_inactive $sec   $sec    $prim  #484e50   #5f676a
+# client.unfocused        $tir   $tir    $prim  #292d2e   #222222
+# client.urgent           #2f343a #900000 #ffffff #900000   #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+#################################
+# barra
+#################################
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bindsym $mod+b bar mode toggle
+bar {
+	## disable clicking on workspace buttons
+    bindsym button1 nop
+    bindsym button4 nop
+    bindsym button5 nop
+
+	tray_output primary
+	#tray_padding 0
+
+	position top
+	font pango:Source Sans Pro-10 12
+	status_command i3blocks
+	#	status_command i3status
+	separator_symbol "|"
+
+	#i3bar_command i3bar --transparency
+
+	colors
+	{
+		separator $sec
+		statusline $texto
+		background $prim
+
+		#focused_background $sec $prim $sec
+
+		focused_workspace $sec $prim $sec
+		active_workspace  $sec $prim $sec
+
+		inactive_workspace $prim $prim $sec
+
+		urgent_workspace $urgente $prim $urgente
+
+	}
+}
+
+#################################
+# botones
+#################################
+
+# brightness settings
+bindsym XF86MonBrightnessUp exec xbacklight + 5
+bindsym XF86MonBrightnessDown exec xbacklight - 5
+
+# screenshots
+bindsym Print exec "scrot -e 'mv $f ~/Screenshots'; notify-send 'screenshot taken'"
+bindsym $mod+Print exec "scrot -ue 'mv $f ~/Screenshots'; notify-send 'screenshot taken'"
+
+# volume
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ &&pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- &&pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioMute exec pulseaudio-ctl mute toggle
+
+# granular volume control
+bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ &&pkill -SIGRTMIN+10 i3blocks
+bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- &&pkill -SIGRTMIN+10 i3blocks
+
+#################################
+# programas
+#################################
+
+# Always Exec apps
+
+#exec --no-startup-id ~/.config/conky/conky_start.sh
+
+# status bar
+exec --no-startup-id nm-applet
+exec --no-startup-id blueberry-tray
+
+# lockscreen
+bindsym $mod+0 exec betterlockscreen -l
+exec --no-startup-id xautolock -time 25 -locker "betterlockscreen -l"
+exec --no-startup-id xss-lock
+
+# notification daemon
+exec --no-startup-id dunst
+
+# historial del clipboard
+# exec --no-startup-id CM_LAUNCHER=rofi
+
+exec "telegram-desktop "
+exec --no-startup-id  "sleep 2; i3-msg '[instance=telegram-desktop] move scratchpad'"
+
+# top-down terminal
+# podria ser interesante crearle su propia sesion para tmux
+exec "st -e tmux new -A -s float"
+# exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] mark stfloat, move scratchpad'"
+exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] move scratchpad'"
+
+# scratchpad
+# bindsym $mod+Tab scratchpad show
+bindsym $mod+BackSpace move scratchpad
+bindsym $mod+bar [instance="telegram-desktop"] scratchpad show
+# bindsym $mod+less [con_mark="stfloat"] scratchpad show
+bindsym $mod+less [class="St"] scratchpad show
+

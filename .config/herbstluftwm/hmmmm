@@ -1,0 +1,162 @@
+
+
+
+
+
+hc keybind $Mod-t spawn ~/.scripts/dmenu/themeselector.sh
+hc keybind $Mod-x spawn ~/.scripts/dmenu/launcher.sh
+
+# media keys
+hc keybind XF86AudioRaiseVolume spawn ~/.config/herbstluftwm/volumeup.sh
+hc keybind XF86AudioLowerVolume spawn ~/.config/herbstluftwm/volumedown.sh
+hc keybind XF86AudioMute spawn ~/.config/herbstluftwm/volumemute.sh
+hc keybind XF86AudioPlay spawn ~/.config/herbstluftwm/play.sh
+hc keybind XF86AudioNext spawn ~/.config/herbstluftwm/next.sh
+hc keybind XF86AudioPrev spawn ~/.config/herbstluftwm/prev.sh
+
+
+# The following cycles through the available layouts within a frame, but skips
+# layouts, if the layout change wouldn't affect the actual window positions.
+# I.e. if there are two windows within a frame, the grid layout is skipped.
+hc keybind $Mod-space                                                           \
+            or , and . compare tags.focus.curframe_wcount = 2                   \
+                     . cycle_layout +1 vertical horizontal max vertical grid    \
+               , cycle_layout +1
+
+# per-tag layouting
+
+hc load Web '
+(clients max:0 0x1800010)
+'
+
+hc load Term '
+(split horizontal:0.500000:0
+ (clients max:0 0x1e0000a)
+ (clients max:0 0x200000a))
+'
+
+hc load Work '
+(split horizontal:0.700000:0
+ (clients max:1 0x1000007 0x4e0000a)
+ (split vertical:0.500000:1
+ (clients max:0 0xa02e1d)
+ (clients max:0 0xa02af3)))
+'
+
+hc load Org '
+(split horizontal:0.350000:1
+ (split vertical:0.500000:0
+ (clients max:0 0x22002ad)
+ (clients max:0 0x2200003))
+ (clients max:0))
+'
+
+hc load Media '
+(split horizontal:0.400000:0
+ (split vertical:0.750000:0
+ (clients max:0 0x2600001)
+ (clients vertical:0))
+ (split vertical:0.350000:1 
+(clients vertical:0)
+ (clients max:0)))
+'
+
+hc load Mail '
+(split horizontal:0.600000:0
+ (clients max:2 0x2400010 0x240013b 0x2c4d1ac)
+ (clients vertical:0))
+'
+
+# mouse
+hc mouseunbind --all
+hc mousebind $Mod-Button1 move
+hc mousebind $Mod-Button2 zoom
+hc mousebind $Mod-Button3 resize
+
+# focus
+hc keybind $Mod-BackSpace   cycle_monitor
+hc keybind $Mod-Tab         cycle_all +1
+hc keybind $Mod-Shift-Tab   cycle_all -1
+hc keybind $Mod-c cycle
+hc keybind $Mod-i jumpto urgent
+
+# theme
+hc attr theme.tiling.reset 1
+hc attr theme.floating.reset 1
+# hc set frame_border_active_color '#34D2AE'
+hc set frame_border_active_color '#FAAD45'
+hc set frame_border_normal_color '#E12E72'
+hc set frame_bg_normal_color ''
+hc set frame_bg_active_color '#66000000'
+hc set frame_border_width 0
+hc set frame_border_inner_width 0
+hc set always_show_frame 0
+hc set frame_active_opacity 30 
+hc set frame_normal_opacity 0 
+hc set frame_bg_transparent 0
+hc set frame_transparent_width 0
+hc set frame_gap 15 
+
+hc attr theme.padding_left 15
+hc attr theme.active.color '#FAAD45'
+hc attr theme.normal.color '#18859C'
+hc attr theme.urgent.color '#FAB148'
+hc attr theme.inner_width 0
+hc attr theme.outer_witdh 0
+hc attr theme.inner_color '#EB9605'
+hc attr theme.border_width 5
+hc attr theme.floating.border_width 10
+hc attr theme.floating.outer_width 5
+hc attr theme.floating.outer_color '#FE1F9C' 
+#hc attr theme.active.inner_color '#FAB148'
+#hc attr theme.active.outer_color '#FAB148'
+hc attr theme.background_color '#59000000'
+
+hc set window_border_width 0
+hc set frame_padding 0
+hc set window_gap 0
+hc set smart_window_surroundings 0
+hc set smart_frame_surroundings 0
+hc set mouse_recenter_gap 0
+
+# rules
+hc unrule -F
+#hc rule class=XTerm tag=3 # move all xterms to tag 3
+hc rule focus=on # normally focus new clients
+#hc rule focus=off # normally do not focus new clients
+# give focus to most common terminals
+#hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
+hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+hc rule class=Steam tag=Steam
+# unlock, just to be sure
+hc unlock
+
+herbstclient set tree_style '?| ++?-+'
+
+# do multi monitor setup here, e.g.:
+# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
+# or simply:
+# hc detect_monitors
+
+# find the panel
+panel=~/.config/herbstluftwm/launch.sh
+for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
+start it on each monitor
+"$panel" $monitor &
+hc pad 0 "" "" 35
+hc pad 0 0 
+hc pad 0 "" 0
+hc pad 0 "" "" "" 0
+done
+
+#############
+#  Startup  #
+#############
+
+nitrogen --set-centered --random  &
+setxkbmap de &
+compton &
+xfce4-power-manager &
+udiskie &

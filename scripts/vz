@@ -1,0 +1,27 @@
+#!/bin/sh
+
+dir=.
+while getopts l:t option
+do
+    case "${option}"
+    in
+    l)
+        dir="${OPTARG}"
+        ;;
+    t)
+        dir=~
+        ;;
+    *)
+        exit
+        ;;
+    esac
+done
+
+val=$( find "$dir" -type f | fzf )
+
+if [ "$val" != "" ]
+then
+    echo "abriendo :$val"
+    $EDITOR "$val"
+fi
+

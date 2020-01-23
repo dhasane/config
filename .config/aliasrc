@@ -1,0 +1,147 @@
+#!/bin/sh
+
+# alias
+
+alias llaves="gpg --list-secret-keys --keyid-format LONG"
+alias pantalla=arandr
+alias clima="curl wttr.in"
+
+alias duck="mono ~/.steam/steam/steamapps/common/Duck\ Game/DuckGame.exe"
+
+# sistema
+
+
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+alias pacu='sudo pacman -Syuu'
+alias upd=' sudo pacman -Syu
+            printf "\n\n Terminada actualización pacman \n\n\n"
+            yay -Syu
+            printf "\n\n Terminada actualización aur \n\n"
+            '
+
+alias cd=" cd" # no es necesario que cada cd aparezca en historia
+# alias ls=" ls"
+# alias ls=" exa"
+alias ls=" lsd"
+alias l=" exa -l"
+alias sudo='sudo ' # pa los alias
+alias rf='rm -rf'
+
+# eliminar paquetes huerfanos
+alias purgetheorphans='sudo pacman -Rns $(pacman -Qtdq)'
+# alias purgetheorphans='
+#                 brr=$(pacman -Qtdq)
+#                 echo "$brr"
+#                 if [ -z "$brr" ]; then
+#                     sudo pacman -Rns $brr
+#                 else
+#                     echo no hay paquetes para eliminar
+#                 fi
+#                 '
+# alias iwannadai="rm -rf /"
+# alias russian="[ $[ $RANDOM % 6 ] = 0 ] && echo 'bang' || echo 'Lucky boi' "
+
+alias showshs="cat /etc/shells" # mostrar todos los shells disponibles
+alias changesh='echo $SHELL;showshs;chsh;sudo shutdown -r 0' # cambiar el shell
+alias se='ls /usr/bin | grep'
+
+alias usb='cd /run/media/dhas'
+alias clear=' clear ; tmux clear-history' # limpiar la pantalla y el historial de tmux
+
+# para siempre comenzar en init, evitando estar creando nuevas sesiones constantemente
+# alias tmux="tmux new -A -s Init"
+
+alias matar=pkill
+alias word='grep -rnw . -e '
+alias open='xdg-open' # abrir archivos con el programa predeterminado
+
+# programas
+alias qb=qutebrowser
+alias v=' nvim'
+alias vim=nvim
+alias sv='sudo nvim'
+alias all=' nvim *'
+alias viz=' nvim $(fzf)'
+
+# scripts
+alias goto=". goto"
+
+# web
+alias whats='xdg-open https://web.whatsapp.com/'
+alias yt=youtube
+alias opgit="xdg-open https://github.com/dhasane"
+
+alias dmusic='youtube-dl --extract-audio -i --audio-format mp3 ' # aqui va el link  # descargar musica
+
+# construir con cmake
+alias mk=make
+alias db='
+	if [ ! -d build ]
+		then
+			echo "carpeta creada"
+			mkdir build
+		fi;
+	cd build;
+	cmake ..
+	'
+
+alias rb='
+	if [ -d build ]
+		then
+			rm -rf build
+			echo "carpeta build eliminada"
+		else
+			echo "carpeta build inexistente"
+		fi;
+	'
+
+alias dmk='
+	if [ ! -d build ]
+		then
+			echo "carpeta creada"
+			mkdir build
+		fi;
+	cd build;
+	cmake ..;
+	make;
+	cd ..;
+	'
+
+# lenguajes
+alias py=python3
+alias py2=python2
+alias prolog=swipl
+alias rr=Rscript
+alias jav=javac
+
+###########
+# funciones
+###########
+
+# subir directorios como : .. # , donde # es el numero de directorios a subir
+..() {
+    cd $(for ((c=0; c<${1:-1}; ++c)); do echo -n ../; done)
+}
+alias ..=" .."
+
+# Find files with extension
+# Usage: fext <ext> [max_depth]
+fext() {
+  if [ -z "${2}" ]; then
+    find . -type f -name "*.${1}"
+  else
+    find . -maxdepth "${2}" -type f -name "*.${1}"
+  fi
+}
+
+# Find file/directory by substring
+# Usage: fn <substring> [max_depth]
+fn() {
+  if [ -z "${2}" ]; then
+    find . -iname "*${1}*"
+  else
+    find . -maxdepth "${2}" -iname "*${1}*"
+  fi
+}
+

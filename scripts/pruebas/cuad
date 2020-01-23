@@ -1,0 +1,49 @@
+#!/bin/sh
+
+mat=$( find ~/.cuadernos/* -maxdepth 1 -type d -printf '%f\n' | rofi -dmenu -theme oxide)
+if [ "$mat" != "" ]
+then
+
+	if [ "$1" = "-v" ] # en caso de querer poner opciones adicionales
+	then
+		
+		opc=$(find ~/.cuadernos/"$mat"/* -name '*.xopp' -printf '%f\n'  | rofi -dmenu -theme oxide )
+
+		if [ "$opc" != "" ]
+		then
+			nom=~/.cuadernos/"$mat/$opc"
+			echo "abriendo $nom"
+		fi
+
+	elif [ "$1" = "-t" ] 
+	then
+		
+		# lo mismo de siempre, pero para crear "cuadernos" en texto plano y no xournal
+		nom=~/.cuadernos/"$mat/$mat-practica-$(date +%F-%R)"
+		echo "creando $nom"
+		eval "$EDITOR $nom"
+
+	elif [ "$1" = "-p" ] # en caso de querer poner opciones adicionales
+	then
+		
+		# aqui me gustaria que siempre fuera al mismo archivo, y crearlo si no existe
+		echo "creando $nom"
+
+	else
+
+		nom=~/.cuadernos/"$mat/$mat-$(date +%F-%R)".xopp
+		echo "creando $nom"
+		eval ""
+		cp ~/.cuadernos/.default/default.xopp "$nom"
+
+	fi
+
+	if [ "$nom" != "" ]
+	then
+		# girar la pantalla para que sea mas comodo escribir
+
+		( xournalpp "$nom" &> /dev/null & )
+
+	fi
+
+fi

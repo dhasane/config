@@ -1,0 +1,28 @@
+
+! xft.dpi: 120
+
+!// hard contrast: #1d2021 / soft contrast: #32302f
+*color0:	#282828
+*color1:	#cc241d
+*color2:	#98971a
+*color3:	#d79921
+*color4:	#458588
+*color5:	#b16286
+*color6:	#689d6a
+*color7:	#a89984
+*color8:	#928374
+*color9:	#fb4934
+*color10:	#b8bb26
+*color11:	#fabd2f
+*color12:	#83a598
+*color13:	#d3869b
+*color14:	#8ec07c
+*color15:	#ebdbb2
+!*color16:	[255] = 0,
+!// more colors can be added after 255 to use with DefaultXX
+*color256:	#282828
+!  // 256 -> bg
+*color257:	#ebdbb2
+!  // 257 -> fg
+*color258:	#add8e6
+!  // 258 -> cursor

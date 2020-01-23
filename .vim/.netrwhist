@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/dhas/.config/vim'
+let g:netrw_dirhist_2='/home/dhas/cmdtools'
+let g:netrw_dirhist_3='/home/dhas/comp_vis'
+let g:netrw_dirhist_4='/home/dhas/Contingent99'
+let g:netrw_dirhist_5='/home/dhas/Descargas'
+let g:netrw_dirhist_6='/home/dhas/eclipse-workspace'
+let g:netrw_dirhist_7='/home/dhas/.config/alias'
+let g:netrw_dirhist_8='/home/dhas'

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+val=$( find ~ -type d | fzf )
+
+if [ "$val" != "" ]
+then
+    echo " abriendo direccion :$val"
+    cd "$val" || return
+fi
+

@@ -1,0 +1,28 @@
+[user]
+	email = danihas@live.com
+	name = dhasane
+[core]
+	editor = nvim
+[filesystem "Oracle Corporation|1.8.0_221|/dev/sda8"]
+	timestampResolution = 1002 milliseconds
+	minRacyThreshold = 0 nanoseconds
+[diff]
+	tool = vimdiff
+	; tool = nvim
+[difftool]
+	prompt = false
+[alias]
+    d = difftool
+[mergetool "nvim"]
+    cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+[credential]
+	helper = store
+[filesystem "Oracle Corporation|12.0.2|/dev/sda8"]
+	timestampResolution = 11000 nanoseconds
+	minRacyThreshold = 0 nanoseconds
+[filesystem "Oracle Corporation|1.8.0_231|/dev/sda8"]
+	timestampResolution = 1001 milliseconds
+	minRacyThreshold = 0 nanoseconds
+[filesystem "N/A|13.0.1|/dev/sda8"]
+	timestampResolution = 16000 nanoseconds
+	minRacyThreshold = 3613 microseconds
