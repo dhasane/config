@@ -13,52 +13,48 @@
 "  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 "endif
 
-call plug#begin('~/.vim/plugged')
-
- Plug 'mhinz/vim-startify' 							" bonita pantalla de inicio
- " Plug 'morhetz/gruvbox'								" colores cheveres :D
- Plug 'lifepillar/vim-gruvbox8'
- Plug 'liuchengxu/vista.vim'						" informacion sobre partes importantes del archivo
- " Plug 'scrooloose/nerdtree' 						" archivos
- Plug 'itchyny/lightline.vim'  						" mejor barra de informacion
- Plug 'sheerun/vim-polyglot'
- Plug 'PotatoesMaster/i3-vim-syntax'
-
-" linting
- " Plug 'scrooloose/syntastic'
- Plug 'neomake/neomake'
-
- Plug 'christoomey/vim-tmux-navigator'  			" simplificar movimiento entre vim y tmux
- Plug 'scrooloose/nerdcommenter'  					" bonito comentador
-
- " Plug 'tpope/vim-dispatch'
-
- Plug 'airblade/vim-gitgutter'						" git gud
- Plug 'tpope/vim-fugitive'
-
-
- " Plug 'lervag/vimtex'                               " latex
- Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-
- Plug 'mbbill/undotree'
-
- Plug 'tpope/vim-surround'
- Plug 'qpkorr/vim-bufkill'
-
- Plug 'voldikss/vim-floaterm'
- Plug 'puremourning/vimspector'
-
- Plug 'liuchengxu/vim-clap', { 'do': function('clap#helper#build_all') }
-
- " Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
-
-call plug#end()
-
-
 " ######################
 " pluggins
 " ######################
+
+call plug#begin('~/.vim/plugged')
+
+ " utilidades
+ Plug 'mhinz/vim-startify' 							" bonita pantalla de inicio
+ " Plug 'morhetz/gruvbox'								" colores cheveres :D
+ Plug 'lifepillar/vim-gruvbox8'
+ " Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
+
+ Plug 'liuchengxu/vista.vim'						" informacion sobre partes importantes del archivo
+ Plug 'itchyny/lightline.vim'  						" mejor barra de informacion
+ Plug 'mbbill/undotree'                             " historial de cambios
+ Plug 'christoomey/vim-tmux-navigator'  			" simplificar movimiento entre vim y tmux
+ Plug 'scrooloose/nerdcommenter'  					" bonito comentador
+
+ Plug 'puremourning/vimspector'                     " debbuger
+
+ Plug 'liuchengxu/vim-clap', { 'do': function('clap#helper#build_all') }
+ " Plug 'tpope/vim-dispatch'
+
+ " git gud
+ Plug 'airblade/vim-gitgutter'
+ Plug 'tpope/vim-fugitive'
+
+ " soporte de lenguajes
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ Plug 'sheerun/vim-polyglot'
+ Plug 'PotatoesMaster/i3-vim-syntax'
+" linting
+ " Plug 'neomake/neomake'
+ Plug 'dense-analysis/ale'
+
+ " en duda
+ Plug 'tpope/vim-surround'
+ Plug 'qpkorr/vim-bufkill'
+ Plug 'voldikss/vim-floaterm'
+
+call plug#end()
+
 
 " startify
     function! s:center(lines) abort
@@ -137,6 +133,8 @@ call plug#end()
 	" let g:gruvbox_contrast_dark = "soft"
     "
 	" let g:gruvbox_italicize_comments=1
+    set background=dark
+    " set background=light
     colorscheme gruvbox8_soft
 
 
@@ -336,6 +334,11 @@ call plug#end()
 	" Enable NERDCommenterToggle to check all selected lines is commented or not
 	let g:NERDToggleCheckAllLines = 1
 
+
+" vimspector
+" let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+let g:vimspector_enable_mappings = 'HUMAN'
+
 " neomake
 
     " When writing a buffer (no delay).
@@ -346,7 +349,9 @@ call plug#end()
     " call neomake#configure#automake('rw', 1000)
     " Full config: when writing or reading a buffer, and on changes in insert and
     " normal mode (after 500ms; no delay when writing).
-    call neomake#configure#automake('nrwi', 500)
+
+
+    " call neomake#configure#automake('nrwi', 500)
     " tambien se pueden llamar otros procesos
 
 " gitgutter
@@ -392,9 +397,13 @@ call plug#end()
 
 " status bar
 
+    " source ~/.config/nvim/theme/gruvbox.vim
+    " source ~/.config/nvim/theme/gruvbox_material.vim
+    source ~/.config/nvim/theme/gruvbox_material_dark.vim
+    " source ~/.config/nvim/theme/gruvbox_material_light.vim
         " \ 'colorscheme': 'gruvbox',
     let g:lightline = {
-        \ 'colorscheme': 'jellybeans',
+        \ 'colorscheme': 'gruvbox_material',
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],
         \             [ 'readonly','gitbranch' , 'filename', 'modified'] ],

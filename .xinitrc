@@ -1,8 +1,8 @@
 #!/bin/sh
 
-[ -f "$HOME/.profile" ] && "$HOME" "$HOME/.profile"
+[[ -f "$HOME/.profile" ]] && . ~/.profile
 
-[ -f ~/.Xresources ] && xrdb -merge -I "$HOME" ~/.Xresources
+[[ -f ~/.Xresources ]] && xrdb -merge -I $HOME ~/.Xresources
 
 [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 

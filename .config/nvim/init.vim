@@ -84,7 +84,12 @@ elseif has('python2') " segunda opcion
   set pyx=2
 endif
 
-autocmd BufWritePre * %s/\s\+$//e " quitar espacios ' ' sobrantes al final
+" autocmd BufWritePre * %s/\s\+$//e " quitar espacios ' ' sobrantes al final
+" autocmd FileType c,cpp,vim,java,php,rust,python autocmd BufWritePre <buffer> %s/\s\+$//e
+" autocmd FileType c,cpp,vim,java,php,rust,python autocmd BufWritePre * :call StripEndlineComments()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+
 " autocmd Filetype * &ft!="markdown" | BufWritePre * %s/\s\+$//e " quitar espacios ' ' sobrantes al final, excepto si es markdown
 
 "quitar autocontinuacion de comentarios al pasar a la siguiente linea
@@ -114,6 +119,12 @@ syntax on
 syntax enable
 set encoding=utf-8
 
+set linebreak
+
+
+set list listchars=tab:»·,trail:·  " configuracion cool que encontre para mostrar espacios al inicio y al final de la linea
+
+set breakindent
 set smarttab  "Improves tabbing
 set expandtab " Use spaces instead of tabs
 set tabstop=4  "How much space Vim gives to a tab
@@ -137,7 +148,6 @@ set clipboard=unnamedplus  " en para el clipboard, en teoria
 " busqueda
 set ignorecase " make searches case insensitive
 set nohlsearch  " highlight matching search strings
-
 
 " set completeopt+=preview
 " set completeopt+=menuone,preview
@@ -321,7 +331,6 @@ set signcolumn=yes
 
 " mostrar las marcas
     nnoremap '? :marks <cr>
-	" nnoremap '? :marks abcdefghijklmnopqrstuvwxyz<cr>:'
 
     " para solo mostrar las marcas dentro del archivo
 	nnoremap <Leader>' :marks abcdefghijklmnopqrstuvwxyz<cr>:'
@@ -345,6 +354,8 @@ set signcolumn=yes
     " nnoremap <Leader>m :make <cr>
     " nnoremap <Leader>m :Dispatch <cr>
     nnoremap <Leader><C-m> :copen <cr>
+    " nnoremap <Leader>m :lopen 5 <cr>
+    nnoremap <Leader>m :botright lwindow 5<cr>
 
 "mover entre buffers
     noremap <Leader>j <esc>:bp<cr>
@@ -376,9 +387,12 @@ set signcolumn=yes
 	inoremap <C-a> <esc>
 " funciones generales de otros editores
 " guardar
-	 noremap <C-s> m':w<cr>`'
-	inoremap <C-s> <esc><esc>m':w<cr>`'
-	vnoremap <C-s> <esc><esc>m':w<cr>`'
+	 noremap <C-s> :w<cr>
+	inoremap <C-s> <esc><esc>:w<cr>
+	vnoremap <C-s> <esc><esc>:w<cr>
+	"  noremap <C-s> m':w<cr>`'
+	" inoremap <C-s> <esc><esc>m':w<cr>`'
+	" vnoremap <C-s> <esc><esc>m':w<cr>`'
 " deshacer
 	inoremap <C-z> <esc> ui
 	 noremap <C-z> u
@@ -498,5 +512,10 @@ function! Cerrar()
     endif
 endfunction
 
-
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
 

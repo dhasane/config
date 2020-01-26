@@ -10,7 +10,6 @@ alias duck="mono ~/.steam/steam/steamapps/common/Duck\ Game/DuckGame.exe"
 
 # sistema
 
-
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias pacu='sudo pacman -Syuu'
@@ -18,6 +17,7 @@ alias upd=' sudo pacman -Syu
             printf "\n\n Terminada actualización pacman \n\n\n"
             yay -Syu
             printf "\n\n Terminada actualización aur \n\n"
+            purgetheorphans
             '
 
 alias cd=" cd" # no es necesario que cada cd aparezca en historia
@@ -28,17 +28,6 @@ alias l=" exa -l"
 alias sudo='sudo ' # pa los alias
 alias rf='rm -rf'
 
-# eliminar paquetes huerfanos
-alias purgetheorphans='sudo pacman -Rns $(pacman -Qtdq)'
-# alias purgetheorphans='
-#                 brr=$(pacman -Qtdq)
-#                 echo "$brr"
-#                 if [ -z "$brr" ]; then
-#                     sudo pacman -Rns $brr
-#                 else
-#                     echo no hay paquetes para eliminar
-#                 fi
-#                 '
 # alias iwannadai="rm -rf /"
 # alias russian="[ $[ $RANDOM % 6 ] = 0 ] && echo 'bang' || echo 'Lucky boi' "
 
@@ -73,6 +62,8 @@ alias yt=youtube
 alias opgit="xdg-open https://github.com/dhasane"
 
 alias dmusic='youtube-dl --extract-audio -i --audio-format mp3 ' # aqui va el link  # descargar musica
+
+# lenguajes
 
 # construir con cmake
 alias mk=make
@@ -121,9 +112,24 @@ alias jav=javac
 
 # subir directorios como : .. # , donde # es el numero de directorios a subir
 ..() {
-    cd $(for ((c=0; c<${1:-1}; ++c)); do echo -n ../; done)
+    cd $(for ((c=0; c<${1:-1}; ++c)); do echo -n ../; done) || exit
 }
 alias ..=" .."
+
+# eliminar paquetes huerfanos
+# alias purgetheorphans='sudo pacman -Rns $(pacman -Qtdq)'
+# para que no salgan errores innecesarios al
+# no haber paquetes para eliminar
+purgetheorphans() {
+    brr=$(pacman -Qtdq)
+    # echo "\"$brr\""
+    if [ "$brr" != "" ]; then
+        echo "eliminando: "
+        sudo pacman -Rns $brr
+    else
+        echo " no hay paquetes para limpiar"
+    fi
+}
 
 # Find files with extension
 # Usage: fext <ext> [max_depth]

@@ -2,6 +2,7 @@
 
 {
     "suggest.autoTrigger": "trigger",
+    "diagnostic.enable": false,
     "diagnostic.messageTarget": "float",
     "suggest.snippetIndicator": "►",
 
@@ -17,6 +18,8 @@
     "coc.preferences.snippets.enable": true,
     "coc.preferences.extensionUpdateCheck": "never",
     "suggest.disableMenu": true,
+
+
 
     "python.linting.pylintUseMinimalCheckers": true,
     "python.linting.pylintPath": "pylint",

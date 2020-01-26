@@ -59,9 +59,11 @@ title_align center
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec $TERM
-# bindsym $mod+mod1 exec $TERM
-bindsym $mod+c exec $TERM
+bindsym $mod+Return exec "st"
+bindsym $mod+c exec "st"
+# por alguna razon esto dejo de funcionar
+# bindsym $mod+Return exec $TERM
+# bindsym $mod+c exec $TERM
 #bindsym $mod+Return exec st -e tmux new -A -s Init
 
 # saltar a ventana urgente
