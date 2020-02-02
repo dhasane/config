@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
-let g:netrw_dirhist_5='/home/dhas/.cfg'
-let g:netrw_dirhist_4='/home/dhas/repos/prog/IA/evolutiva/evolutivaEj'
-let g:netrw_dirhist_3='/home/dhas/.local/share/Steam/steamapps/common/Noita/mods/starting_loadouts'
-let g:netrw_dirhist_2='/home/dhas/.vim/plugged/vim-clap/autoload/clap'
-let g:netrw_dirhist_1='/home/dhas/.config/nvim'

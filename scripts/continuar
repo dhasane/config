@@ -5,7 +5,7 @@ CONTINUAR="$HOME/.continuar"
 if [ -z "$1" ]
 then
     ubi=$(command cat "$CONTINUAR" | fzf)
-    cd "$ubi" || return
+    echo "$ubi"
 else
     while getopts gv option
     do

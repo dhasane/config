@@ -10,6 +10,8 @@ alias duck="mono ~/.steam/steam/steamapps/common/Duck\ Game/DuckGame.exe"
 
 # sistema
 
+alias cont='cd $(continuar)'
+
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias pacu='sudo pacman -Syuu'
@@ -124,10 +126,10 @@ purgetheorphans() {
     brr=$(pacman -Qtdq)
     # echo "\"$brr\""
     if [ "$brr" != "" ]; then
-        echo "eliminando: "
-        sudo pacman -Rns $brr
+        echo " Eliminando: "
+        sudo pacman -Rns $(pacman -Qtdq)
     else
-        echo " no hay paquetes para limpiar"
+        echo " No hay paquetes para limpiar"
     fi
 }
 

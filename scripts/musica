@@ -1,6 +1,0 @@
-#!/bin/sh
-
-mpd ~/.config/mpd/config
-mpc update
-ncmpcpp
-

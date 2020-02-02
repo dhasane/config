@@ -27,7 +27,7 @@
 # }
 
 
-if [ "$USER" = "root" ]; then CARETCOLOR="red"; else CARETCOLOR="magenta"; fi
+# if [ "$USER" = "root" ]; then CARETCOLOR="red"; else CARETCOLOR="magenta"; fi
 
 # Prompt
 #
@@ -40,35 +40,35 @@ if [ "$USER" = "root" ]; then CARETCOLOR="red"; else CARETCOLOR="magenta"; fi
 # Background color codes:
 # 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
 
-setprompt () {
+# setprompt () {
 
 	###
     # Modify Git prompt
-    ZSH_THEME_GIT_PROMPT_PREFIX=" ["
-    ZSH_THEME_GIT_PROMPT_SUFFIX="]"
-
-local      user='%{$fg_bold[cyan]%}%n%{$reset_color%}'
-local        at='%{$fg[yellow]%}@%{$reset_color%}'
-local      host='%{$fg_bold[blue]%}%m%{$reset_color%}'
-local  conector='%{$fg_bold[yellow]%}::%{$reset_color%}'
-local ubicacion='%{${fg_bold[green]}%}%~%{$reset_color%}'
-local       git='${(e)PR_FILLBAR}$PR_CYAN$(git_prompt_info)%{$reset_color%}'
-
-
-PROMPT="
-${user}${at}${host}${conector}$ubicacion${git}
-%{${fg[$CARETCOLOR]}%}> %{${reset_color}%}"
-
-}
-
-setprompt
-
-local return_code="%(?..%{$fg_bold[red]%}:( %?%{$reset_color%})"
-
-RPROMPT='${return_code} ${vim_mode}'
-
-
-
+    # ZSH_THEME_GIT_PROMPT_PREFIX=" ["
+    # ZSH_THEME_GIT_PROMPT_SUFFIX="]"
+#
+# local      user='%{$fg_bold[cyan]%}%n%{$reset_color%}'
+# local        at='%{$fg[yellow]%}@%{$reset_color%}'
+# local      host='%{$fg_bold[blue]%}%m%{$reset_color%}'
+# local  conector='%{$fg_bold[yellow]%}::%{$reset_color%}'
+# local ubicacion='%{${fg_bold[green]}%}%~%{$reset_color%}'
+# local       git='${(e)PR_FILLBAR}$PR_CYAN$(git_prompt_info)%{$reset_color%}'
+#
+#
+# PROMPT="
+# ${user}${at}${host}${conector}$ubicacion${git}
+# %{${fg[$CARETCOLOR]}%}> %{${reset_color}%}"
+#
+# }
+#
+# setprompt
+#
+# local return_code="%(?..%{$fg_bold[red]%}:( %?%{$reset_color%})"
+#
+# RPROMPT='${return_code} ${vim_mode}'
+#
+#
+#
 
 
 

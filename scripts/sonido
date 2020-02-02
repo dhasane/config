@@ -1,7 +1,6 @@
 #!/bin/sh
 
-
-comp=$(amixer -M get Master | grep 'Left: Playback') 
+comp=$(amixer -M get Master | grep 'Left: Playback')
 
 echo "$comp"
 

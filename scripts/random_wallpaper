@@ -2,9 +2,10 @@
 
 if [ "$1" = "" ]
 then
-    dir="$HOME/Pictures/wallpapers/"
+    # dir="$HOME/Pictures/wallpapers/"
+    echo 'por favor ingresar directorio'
 else
     dir="$1"
+    ~/scripts/wallp "$(find "$dir" -type f | shuf -n 1)"
 fi
 
-~/scripts/wallp "$(find "$dir" -type f | shuf -n 1)"
