@@ -1,0 +1,21 @@
+#!/bin/sh
+
+ids=$(xinput list | sed "/pointer/s/[[:space:]]\+/\n/g;t;d" | sed "/id=/s/id=//g;t;d")
+
+if [ "$1" = "-d" ]
+then
+    dir="0"
+else
+    dir="1"
+fi
+
+#echo "$dir"
+
+for id in $ids
+do
+
+    echo "$id"
+    # command "xinput set-prop $id xinput set-prop 10 \"Device Enabled\" $dir"
+	xinput set-prop "$id" "Device Enabled" $dir
+done
+
