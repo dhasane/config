@@ -28,7 +28,7 @@ alias cd=" cd" # no es necesario que cada cd aparezca en historia
 alias ls=" lsd"
 alias l=" exa -l"
 alias sudo='sudo ' # pa los alias
-alias rf='rm -rf'
+alias rf=' rm -rf'
 
 # alias iwannadai="rm -rf /"
 # alias russian="[ $[ $RANDOM % 6 ] = 0 ] && echo 'bang' || echo 'Lucky boi' "
@@ -38,7 +38,7 @@ alias changesh='echo $SHELL;showshs;chsh;sudo shutdown -r 0' # cambiar el shell
 alias se='ls /usr/bin | grep'
 
 alias usb='cd /run/media/dhas'
-alias clear=' clear ; tmux clear-history' # limpiar la pantalla y el historial de tmux
+alias clear='[[ -z "$TMUX" ]] && clear && tmux clear-history || clear ' # limpiar la pantalla y el historial de tmux
 
 # para siempre comenzar en init, evitando estar creando nuevas sesiones constantemente
 # alias tmux="tmux new -A -s Init"
@@ -46,6 +46,8 @@ alias clear=' clear ; tmux clear-history' # limpiar la pantalla y el historial d
 alias matar=pkill
 alias word='grep -rnw . -e '
 alias open='xdg-open' # abrir archivos con el programa predeterminado
+
+alias practical='nvim -u ~/.vimrc'
 
 # programas
 alias qb=qutebrowser

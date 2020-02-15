@@ -1,14 +1,14 @@
 #!/bin/sh
 
 dir=.
-while getopts l:t option
+while getopts l:h option
 do
     case "${option}"
     in
-    l)
+    l) # location
         dir="${OPTARG}"
         ;;
-    t)
+    h) # home
         dir=~
         ;;
     *)
