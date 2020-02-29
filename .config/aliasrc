@@ -13,6 +13,7 @@ alias duck="mono ~/.steam/steam/steamapps/common/Duck\ Game/DuckGame.exe"
 alias cont='cd $(continuar)'
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config-add='(cd ~ ; config add $( cat ~/.cfg-add ); cd -)&>>/dev/null'
 
 alias pacu='sudo pacman -Syuu'
 alias upd=' sudo pacman -Syu
@@ -38,7 +39,7 @@ alias changesh='echo $SHELL;showshs;chsh;sudo shutdown -r 0' # cambiar el shell
 alias se='ls /usr/bin | grep'
 
 alias usb='cd /run/media/dhas'
-alias clear='[[ -z "$TMUX" ]] && clear && tmux clear-history || clear ' # limpiar la pantalla y el historial de tmux
+alias clear='clear ; [[ ! -z "$TMUX" ]] && tmux clear-history ' # limpiar la pantalla y el historial de tmux
 
 # para siempre comenzar en init, evitando estar creando nuevas sesiones constantemente
 # alias tmux="tmux new -A -s Init"

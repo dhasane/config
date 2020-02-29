@@ -33,5 +33,6 @@ xset fp rehash
 
 #exec dwm
 exec i3
+# exec gnome-desktop
 # exec sway
-#exec startxfce4
+# exec startxfce4

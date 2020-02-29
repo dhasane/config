@@ -1,7 +1,7 @@
 #!/bin/sh
 
 MAC="00:18:09:A2:DC:0D"
-
+# MAC="E1:AB:C5:A8:F3:A1"
 connect()
 {
     rep=0
@@ -27,6 +27,7 @@ else
     do
         if [ "$option" = "m" ];then
             MAC=$OPTARG
+            echo "conectando a $MAC"
         fi
         if [ "$option" = "d" ] || [ "$option" = "r" ]; then
             sudo rfkill block bluetooth
