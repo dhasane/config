@@ -13,7 +13,7 @@ alias duck="mono ~/.steam/steam/steamapps/common/Duck\ Game/DuckGame.exe"
 alias cont='cd $(continuar)'
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias config-add='(cd ~ ; config add $( cat ~/.cfg-add ); cd -)&>>/dev/null'
+alias config-add='cd ~ ; config add $( cat ~/.cfg-add ); cd -; config status'
 
 alias pacu='sudo pacman -Syuu'
 alias upd=' sudo pacman -Syu
