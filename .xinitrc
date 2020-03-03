@@ -23,7 +23,7 @@ unclutter --timeout 15 &
 ~/daemons/bat
 
 # idioma del teclado
-setxkbmap -layout la-latin1 &
+# setxkbmap -layout la-latin1 &
 
 # fonts
 xset +fp /home/dhas/.fonts
@@ -33,6 +33,6 @@ xset fp rehash
 
 #exec dwm
 exec i3
-# exec gnome-desktop
 # exec sway
+# exec gnome-desktop
 # exec startxfce4

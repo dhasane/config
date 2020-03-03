@@ -1,6 +1,8 @@
+#!/bin/python3
+
+import sys
 import matplotlib.pyplot as mtpl
 import numpy as np
-import sys
 
 def prt_coordenadas(crds):
     """ imprimir un diccionario de coordenadas """
@@ -12,24 +14,26 @@ def prt_coordenadas(crds):
             print("\t", cont)
         i += 1
 
+# probablemente podria cargar directamente a "coordenadas", pero como que ya asi se quedo :v
 def leer_archivo(arc):
-    """ carga archivos, retorna una lista de header y contenido,
+    """ carga archivos, retorna una lista de tablas con 'header' y 'contenido',
     siendo 'contenido' una lista de lineas """
     file = open(arc, "r")
 
     leer = False
-    ret = []
+    tablas = []
     tam = 0
-    contenido = []
+    lineas = []
 
     for line in file.readlines():
 
         if "+---" in line:
             leer = False
-            ret += [
+            # guarda la nueva tabla
+            tablas += [
                 {
                     "header" : header,
-                    "contenido" : contenido
+                    "contenido" : lineas
                 }
             ]
 
@@ -40,32 +44,36 @@ def leer_archivo(arc):
                 if tam == 0:
                     header = sep
                 else:
-                    contenido += [sep]
+                    lineas += [sep]
                 tam += 1
 
         if "---+" in line:
             tam = 0
-            contenido = []
+            lineas = []
             leer = True
-    return ret
+    return tablas
 
 def graf_a_coordenadas(grf):
-    """ convierte los datos a un diccionario 'coordenadas', separando por columna """
+    """ convierte los datos a un diccionario 'coordenadas', separando por columna
+        este diccionario tiene x, y, errorx, errory
+    """
     coordenadas = [[] for i in range(0, len(grf['contenido'][0])-1)]
     for cont in grf['contenido']:
+        valx = cont[0].split("+-")
         for i in range(1, len(cont)):
-            val = cont[i].split("+-")
+            valy = cont[i].split("+-")
             coordenadas[i-1] += [{
-                'x': cont[0],
-                'y': val[0],
-                'error': val[1] if len(val) > 1 else 0
+                'x': valx[0],
+                'y': valy[0],
+                'errorx': valx[1] if len(valx) > 1 else 0,
+                'errory': valy[1] if len(valy) > 1 else 0
             }]
     return {
         "header" : grf['header'],
         "contenido" : coordenadas
     }
 
-def grafs_a_coordenadas(grfs):
+def tablas_a_coordenadas(grfs):
     """ para convertir una lista de datos a coordenadas """
     coords = []
     for grf in grfs:
@@ -78,31 +86,40 @@ def graficar(crds):
     mtpl.xlabel("hola")
     i = 1
 
+    def get(pos, arr):
+        return list(map(lambda c: float(c[pos]), arr))
+
     #  print(crds['header'][0])
     for cnt in crds['contenido']:
         nombre = crds['header'][0] + '-' + crds['header'][i]
 
         fig = mtpl.figure()
 
+        # creo que falta especificar la escala
+
         mtpl.xlabel(crds['header'][0])
         mtpl.ylabel(crds['header'][i])
         mtpl.title(nombre)
 
-        #  x = np.array(list(map(lambda c: c['x'], cnt)))
-        #  y = np.array(list(map(lambda c: c['y'], cnt)))
-        #
-        #  yerr = np.array(list(map(lambda c: float(c['error']), cnt)))
-        x = list(map(lambda c: float(c['x']), cnt))
-        y = list(map(lambda c: float(c['y']), cnt))
 
-        yerr = list(map(lambda c: float(c['error']), cnt))
+        #  mtpl.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
 
-        mtpl.errorbar(x, y, yerr=yerr)
+        x_values = get('x', cnt)
+        y_values = get('y', cnt)
 
-        mtpl.scatter(x, y)
+        yerr = get('errory', cnt)
+        xerr = get('errorx', cnt)
+
+        mtpl.scatter(x_values, y_values)
+        mtpl.errorbar(
+            x_values, y_values, xerr=xerr, yerr=yerr,
+            color='red',
+            linestyle="None"
+        )
 
         fig.savefig(nombre + '.png')
         i += 1
 
-for grf in grafs_a_coordenadas(leer_archivo(sys.argv[1])):
+for grf in tablas_a_coordenadas(leer_archivo(sys.argv[1])):
+    map(prt_coordenadas, grf)
     graficar(grf)
