@@ -18,3 +18,5 @@ fi
 
   export PATH="${PATH}:${HOME}/.gem/ruby/2.7.0/bin"
 
+  export PATH="${PATH}:${HOME}/inst/flutter/bin"
+

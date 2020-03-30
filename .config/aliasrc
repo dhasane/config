@@ -2,6 +2,7 @@
 
 # alias
 
+alias pila="upower -d"
 alias llaves="gpg --list-secret-keys --keyid-format LONG"
 alias pantalla=arandr
 alias clima="curl wttr.in"
@@ -25,7 +26,12 @@ alias upd=' sudo pacman -Syu
 alias cd=" cd" # no es necesario que cada cd aparezca en historia
 # alias ls=" ls"
 # alias ls=" exa"
-alias ls=" lsd"
+# alias ls="
+#     if lsd 2>/dev/null; then
+#         command 'lsd '
+#     else
+#         command 'ls '
+#     fi"
 alias l=" exa -l"
 alias sudo='sudo ' # pa los alias
 alias rf=' rm -rf'
@@ -49,6 +55,11 @@ alias open='xdg-open' # abrir archivos con el programa predeterminado
 
 alias practical='nvim -u ~/.vimrc'
 
+# git
+alias gis='git status'
+alias gca='git commit -a'
+alias gco='git checkout'
+
 # programas
 alias qb=qutebrowser
 alias v=' nvim'
@@ -56,6 +67,8 @@ alias vim=nvim
 alias sv='sudo nvim'
 alias all=' nvim *'
 alias viz=' nvim $(fzf)'
+# tmux
+alias tkill='tmux kill-session'
 
 # scripts
 alias goto=". goto"

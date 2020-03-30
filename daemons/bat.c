@@ -73,10 +73,6 @@ static void skeleton_daemon()
 
 }
 
-struct cart{
-
-}
-
 void notify( char * txt )
 {
     char command[50];
@@ -109,6 +105,7 @@ int main()
 {
     skeleton_daemon();
 
+    notify("welcome");
     long value;
     long full;
 

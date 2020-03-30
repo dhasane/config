@@ -14,7 +14,7 @@ xsetroot -solid '#5A8E3A'
 hc keyunbind --all
 
 # Use win as the main modifier
-Mod=Mod4    
+Mod=Mod4
 
 # media keys
 hc keybind XF86AudioRaiseVolume spawn ~/.config/herbstluftwm/volumeup.sh
@@ -24,7 +24,7 @@ hc keybind XF86AudioPlay spawn ~/.config/herbstluftwm/play.sh
 hc keybind XF86AudioNext spawn ~/.config/herbstluftwm/next.sh
 hc keybind XF86AudioPrev spawn ~/.config/herbstluftwm/prev.sh
 
-hc keybind $Mod-d spawn rofi -show drun -theme sidebar -font "monoid regular 10"
+hc keybind $Mod-d spawn rofi -show drun -theme sidetab -font "monoid regular 10"
 
 hc keybind $Mod-Shift-0 quit
 hc keybind $Mod-Shift-r reload
@@ -186,4 +186,4 @@ done
 
 compton &
 ~/.fehbg &
-$HOME/.config/polybar/launch.sh &
+# $HOME/.config/polybar/launch.sh &
