@@ -1,7 +1,8 @@
 #!/bin/sh
 
 MAC="00:18:09:A2:DC:0D"
-
+AUDIFONOS="41:42:99:D1:89:21"
+# MAC="E1:AB:C5:A8:F3:A1"
 connect()
 {
     rep=0
@@ -18,15 +19,21 @@ if [ -z "$1" ]
 then
     printf "\t options\n"
     printf "\t [c]onnect \n"
+    printf "\t [a]udifonos \n"
     printf "\t [r]e connect \n"
     printf "\t [d]isconnect \n"
     printf "\t change [m]ac \n"
 
 else
-    while getopts m:crd option
+    while getopts m:crda option
     do
         if [ "$option" = "m" ];then
             MAC=$OPTARG
+            echo "conectando a $MAC"
+        fi
+        if [ "$option" = "a" ];then
+            MAC=$AUDIFONOS
+            echo "conectando a $MAC"
         fi
         if [ "$option" = "d" ] || [ "$option" = "r" ]; then
             sudo rfkill block bluetooth

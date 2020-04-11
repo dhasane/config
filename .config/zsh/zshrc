@@ -215,6 +215,7 @@ bindkey "^?" backward-delete-char
 	# source ~/.config/zsh/themes/awesome.theme
 # else
 	# tema mas simple para la terminal
+    # y curiosamente el que mejor sirve
 	source ~/.config/zsh/themes/tty.zsh
 # fi
 

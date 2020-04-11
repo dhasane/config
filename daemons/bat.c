@@ -14,10 +14,10 @@
 #include <stdbool.h>
 
 
-#define _BAT "/sys/class/power_supply/BAT0"                 // battery
-#define _status "/sys/class/power_supply/BAT0/status"       // status file
-#define _now "/sys/class/power_supply/BAT0/energy_now"      // actual charge
-#define _full "/sys/class/power_supply/BAT0/energy_full"    // full charge
+#define _BAT "/sys/class/power_supply/BAT*"                 // battery
+#define _status "/sys/class/power_supply/BAT*/status"       // status file
+#define _now "/sys/class/power_supply/BAT*/energy_now"      // actual charge
+#define _full "/sys/class/power_supply/BAT*/energy_full"    // full charge
 
 #define stime 30        // interval of time in which the daemon will sleep
 #define percentage 0.1  // percentage for the notification
@@ -122,6 +122,8 @@ int main()
     {
         get_value( _now, &value );
         get_info( _status, state );
+
+        notify(state);
 
         if ( value < notif && !notifSent)
         {

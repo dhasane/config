@@ -11,17 +11,41 @@ alias duck="mono ~/.steam/steam/steamapps/common/Duck\ Game/DuckGame.exe"
 
 # sistema
 
+# mostrar todos los archivos de la carpeta, organizados por peso
+alias peso='du -shx ./{*,.*} | sort -rh'
 alias cont='cd $(continuar)'
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config-add='cd ~ ; config add $( cat ~/.cfg-add ); cd -; config status'
 
 alias pacu='sudo pacman -Syuu'
-alias upd=' sudo pacman -Syu
-            printf "\n\n Terminada actualización pacman \n\n\n"
-            yay -Syu
-            printf "\n\n Terminada actualización aur \n\n"
-            purgetheorphans
-            '
+upd_pacman()
+{
+    sudo pacman -Syu
+    printf "\n\n Terminada actualización pacman \n\n\n"
+    yay -Syu
+    printf "\n\n Terminada actualización aur \n\n"
+    purgetheorphans
+}
+upd_ubuntu()
+{
+    sudo apt update
+    sudo apt upgrade --fix-missing
+    sudo apt dist-upgrade
+    sudo apt autoremove
+}
+
+upd()
+{
+    if [ "$(command -v pacman)" != "" ]
+    then
+        upd_pacman
+    fi
+    if [ "$(command -v apt)" != "" ]
+    then
+        upd_ubuntu
+    fi
+}
 
 alias cd=" cd" # no es necesario que cada cd aparezca en historia
 # alias ls=" ls"
@@ -44,7 +68,7 @@ alias changesh='echo $SHELL;showshs;chsh;sudo shutdown -r 0' # cambiar el shell
 alias se='ls /usr/bin | grep'
 
 alias usb='cd /run/media/dhas'
-alias clear='[[ -z "$TMUX" ]] && clear && tmux clear-history || clear ' # limpiar la pantalla y el historial de tmux
+alias clear='clear ; [[ ! -z "$TMUX" ]] && tmux clear-history ' # limpiar la pantalla y el historial de tmux
 
 # para siempre comenzar en init, evitando estar creando nuevas sesiones constantemente
 # alias tmux="tmux new -A -s Init"

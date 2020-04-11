@@ -1,9 +1,8 @@
 
+# awesome theme :D
 # utilizando como referencia:
 # 	re5et
 # 	simonoff
-
-# me gustaria pensar una mejor manera de mostrar el modo de uso
 
 # vim_ins_mode="%{$fg_bold[cyan]%}[INS]%{$reset_color%}"
 vim_cmd_mode="%{$fg_bold[green]%}[CMD]%{$reset_color%}"
@@ -69,7 +68,7 @@ function precmd {
     local total="$(($prompt+$addsize))"
 
     if [[ "$total" -gt $TERMWIDTH ]]; then
-        PR_PWDLEN="$(($TERMWIDTH - $total))"
+        ((PR_PWDLEN=$TERMWIDTH - "$total" ))
     else
         PR_FILLBAR="\${(l.(($TERMWIDTH - ($total)))..${PR_SPACE}.)}"
     fi
@@ -97,7 +96,7 @@ setprompt () {
 
 
 ###
-# The prompt.
+# Finally, the prompt.
 
     local      user='%{$fg_bold[cyan]%}%n%{$reset_color%}'          # nombre de usuario
     local        at='%{$fg[yellow]%}@%{$reset_color%}'              # simbolo @
