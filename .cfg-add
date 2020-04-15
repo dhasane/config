@@ -21,8 +21,6 @@
 .gitmodules
 .profile
 .tmux.conf
-.vim/autoload/
-.vim/gustaron/
 .xinitrc
 .vimrc
 .zshrc
