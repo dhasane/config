@@ -189,9 +189,14 @@ setprompt () {
     local      gits='$PR_CYAN$(zsh_git)%{$reset_color%}'            # informacion git
     local   espacio='${(e)PR_FILLBAR}'                              # espacio de relleno
     local     caret='%{$fg_bold[$CARETCOLOR]%}> %{$reset_color%}'   # el simbolo para escribir
+    if [[ -n $SSH_CONNECTION ]]; then
+      local     filer='<--------->'
+    else
+      local     filer='           '
+    fi
 
 PROMPT="
- ${user}${at}${host}${conector}${ubicacion}${espacio}           ${gits}
+ ${user}${at}${host}${conector}${ubicacion}${filer}${espacio}${gits}
 ${caret}"
 
 }
