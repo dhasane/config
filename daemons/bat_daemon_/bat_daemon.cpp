@@ -5,13 +5,6 @@
  * Fork this code: https://github.com/pasce/daemon-skeleton-linux-c
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
-#include <sys/stat.h>
-#include <string.h>
-#include <stdbool.h>
 
 #include <iostream>
 #include <string>
@@ -20,7 +13,7 @@
 struct Meta{
 
     std::string bat     = "/sys/class/power_supply/BAT0";   // battery
-    std::string status  = bat + "/status";                  // status file
+    std::string stat    = bat + "/status";                  // status file
     std::string now     = bat + "/energy_now";              // actual charge
     std::string full    = bat + "/energy_full";             // full charge
 
@@ -28,59 +21,6 @@ struct Meta{
     float percentage    = 0.1;                              // percentage for the notification
 
 }meta;
-
-
-static void skeleton_daemon()
-{
-    pid_t pid;
-
-    /* Fork off the parent process */
-    pid = fork();
-
-    /* An error occurred */
-    if (pid < 0)
-        exit(EXIT_FAILURE);
-
-    /* Success: Let the parent terminate */
-    if (pid > 0)
-        exit(EXIT_SUCCESS);
-
-    /* On success: The child process becomes session leader */
-    if (setsid() < 0)
-        exit(EXIT_FAILURE);
-
-    /* Catch, ignore and handle signals */
-    //TODO: Implement a working signal handler */
-    signal(SIGCHLD, SIG_IGN);
-    signal(SIGHUP, SIG_IGN);
-
-    /* Fork off for the second time*/
-    pid = fork();
-
-    /* An error occurred */
-    if (pid < 0)
-        exit(EXIT_FAILURE);
-
-    /* Success: Let the parent terminate */
-    if (pid > 0)
-        exit(EXIT_SUCCESS);
-
-    /* Set new file permissions */
-    umask(0);
-
-    /* Change the working directory to the root directory */
-    /* or another appropriated directory */
-    chdir("/");
-
-    /* Close all open file descriptors */
-    int x;
-    for (x = sysconf(_SC_OPEN_MAX); x>=0; x--)
-    {
-        close (x);
-    }
-
-}
-
 
 void notify( std::string txt )
 {
@@ -102,7 +42,7 @@ void get_info( std::string loc, std::string * value )
 {
     FILE* fd = fopen( loc.c_str() , "r" );
 
-    fscanf( fd, "%s", value );
+    fscanf( fd, "%s", value->c_str() );
 
     fclose( fd );
 }
@@ -110,7 +50,6 @@ void get_info( std::string loc, std::string * value )
 int main()
 {
     notify( "welcome" );
-    skeleton_daemon();
 
     long value;
     long full;
@@ -127,7 +66,7 @@ int main()
     while (1)
     {
         get_value( meta.now, &value );
-        get_info( meta.status, &state );
+        get_info( meta.stat, &state );
 
         if ( value < notif && !notifSent)
         {

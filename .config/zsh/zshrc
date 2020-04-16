@@ -23,7 +23,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/dhas/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 
 stty -ixon
 
@@ -49,7 +49,7 @@ else
 	setterm -blength 0
 
     # colores sacados del fondo de pantalla
-    wal -Rsq &
+    # wal -Rsq &
 
 	# echo -en "\e]P0232323" #black
     # echo -en "\e]P82B2B2B" #darkgrey
@@ -235,7 +235,7 @@ bindkey "^?" backward-delete-char
 # plugins
 #########
 
-local zsh_plugins="$HOME/.config/zsh/plugins"
+# local zsh_plugins="$HOME/.config/zsh/plugins"
 
 # https://github.com/zsh-users/zsh-history-substring-search
 # source $zsh_plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
@@ -243,5 +243,5 @@ local zsh_plugins="$HOME/.config/zsh/plugins"
 # bindkey '^[OA' history-substring-search-up
 # bindkey '^[OB' history-substring-search-down
 
-source $zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

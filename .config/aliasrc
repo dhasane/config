@@ -2,6 +2,7 @@
 
 # alias
 
+alias pila="upower -d"
 alias llaves="gpg --list-secret-keys --keyid-format LONG"
 alias pantalla=arandr
 alias clima="curl wttr.in"
@@ -10,6 +11,8 @@ alias duck="mono ~/.steam/steam/steamapps/common/Duck\ Game/DuckGame.exe"
 
 # sistema
 
+# mostrar todos los archivos de la carpeta, organizados por peso
+alias peso='du -shx ./{*,.*} | sort -rh'
 alias cont='cd $(continuar)'
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -19,17 +22,45 @@ alias gco='git checkout'
 alias config-add='cd ~ ; config add $( cat ~/.cfg-add ); cd -; config status'
 
 alias pacu='sudo pacman -Syuu'
-alias upd=' sudo pacman -Syu
-            printf "\n\n Terminada actualización pacman \n\n\n"
-            yay -Syu
-            printf "\n\n Terminada actualización aur \n\n"
-            purgetheorphans
-            '
+upd_pacman()
+{
+    sudo pacman -Syu
+    printf "\n\n Terminada actualización pacman \n\n\n"
+    yay -Syu
+    printf "\n\n Terminada actualización aur \n\n"
+    purgetheorphans
+}
+upd_ubuntu()
+{
+    sudo apt update
+    sudo apt upgrade --fix-missing
+    sudo apt dist-upgrade
+    sudo apt autoremove
+}
+
+upd()
+{
+    if [ "$(command -v pacman)" != "" ]
+    then
+        echo "actualizando Arch"
+        upd_pacman
+    fi
+    if [ "$(command -v apt)" != "" ]
+    then
+        echo "actualizando Debian"
+        upd_ubuntu
+    fi
+}
 
 alias cd=" cd" # no es necesario que cada cd aparezca en historia
 # alias ls=" ls"
 # alias ls=" exa"
-alias ls=" lsd"
+# alias ls="
+#     if lsd 2>/dev/null; then
+#         command 'lsd '
+#     else
+#         command 'ls '
+#     fi"
 alias l=" exa -l"
 alias sudo='sudo ' # pa los alias
 alias rf=' rm -rf'
@@ -53,13 +84,36 @@ alias open='xdg-open' # abrir archivos con el programa predeterminado
 
 alias practical='nvim -u ~/.vimrc'
 
+# git
+alias gis='git status'
+alias gca='git commit -a'
+alias gco='git checkout'
+
 # programas
 alias qb=qutebrowser
-alias v=' nvim'
-alias vim=nvim
+
+# evitar abrir vim dentro de vim
+open_vim()
+{
+    if [ -z "$VIMRUNTIME" ]
+    then
+        nvim $@
+    else
+        echo ":v"
+        for val in $@
+        do
+            echo "$val"
+        done
+    fi
+}
+
+alias v=' open_vim'
+alias vim=' open_vim'
 alias sv='sudo nvim'
-alias all=' nvim *'
-alias viz=' nvim $(fzf)'
+alias all=' open_vim *'
+alias viz=' open_vim $(fzf)'
+# tmux
+alias tkill='tmux kill-session'
 
 # scripts
 alias goto=". goto"

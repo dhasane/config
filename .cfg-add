@@ -16,12 +16,11 @@
 .config/zsh/
 .dwarffortress/
 .fonts/
+.ssh/
 .gitconfig
 .gitmodules
 .profile
 .tmux.conf
-.vim/autoload/
-.vim/gustaron/
 .xinitrc
 .vimrc
 .zshrc
