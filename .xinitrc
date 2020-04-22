@@ -10,7 +10,16 @@
 ~/.fehbg &
 
 # transparencias
-picom --config ~/.config/picom/picom.conf &
+# if [ "$(command -v picom)" != "" ]
+# then
+#     picom --config ~/.config/picom/picom.conf &
+# else if [ "$(command -v compton)" != "" ]
+# then
+#     compton --config ~/.config/picom/picom.conf &
+# fi
+
+[ "$(command -v picom)" != "" ] && picom --config ~/.config/picom/picom.conf &
+[ "$(command -v compton)" != "" ] && compton --config ~/.config/picom/picom.conf &
 
 # colores sacados del fondo de pantalla
 wal -Rs &
@@ -20,7 +29,7 @@ unclutter --timeout 15 &
 
 # battery daemon
 # mostrar advertencia cuando la bateria este en 10%
-~/daemons/bat
+~/daemons/bin/bat_daemon /sys/class/power_supply/BAT*
 
 # idioma del teclado
 # setxkbmap -layout la-latin1 &
@@ -34,5 +43,4 @@ xset fp rehash
 #exec dwm
 exec i3
 # exec sway
-# exec gnome-desktop
 # exec startxfce4

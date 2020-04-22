@@ -1,28 +1,39 @@
-#include <iostream>
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
 #include <sys/stat.h>
 #include <string.h>
-#include <stdbool.h>
-
-
 
 class Daemon{
-
     private:
     static void skeleton_daemon();
 
+    protected:
+    void start( int wait_time );
+
     public:
-    Daemon();
+    Daemon( );
+    virtual void run() = 0;
 };
 
-Daemon::Daemon(){
+Daemon::Daemon( ){
     this->skeleton_daemon();
-
 }
 
+void Daemon::start( int wait_time )
+{
+    while (1)
+    {
+        this->run();
+        sleep( wait_time );
+    }
+}
+
+/*
+ * the following function was taken from:
+ * https://stackoverflow.com/questions/17954432/creating-a-daemon-in-linux/17955149#17955149
+ * Fork this code: https://github.com/pasce/daemon-skeleton-linux-c
+ */
 void Daemon::skeleton_daemon()
 {
     pid_t pid;
