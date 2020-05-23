@@ -104,10 +104,11 @@ open_vim()
     fi
 }
 
+alias flutter='~/inst/flutter/bin/flutter'
 alias v=' open_vim'
 alias vim=' open_vim'
 alias sv='sudo nvim'
-alias all=' open_vim *'
+alias vall=' open_vim $(find . -type f)'
 alias viz=' open_vim $(fzf)'
 # tmux
 alias tkill='tmux kill-session'

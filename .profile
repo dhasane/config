@@ -1,5 +1,4 @@
 
-
 if [[ $DISPLAY ]]; then
   export TERM="st"
   export TERMINAL="st"

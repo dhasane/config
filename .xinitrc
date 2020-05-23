@@ -9,15 +9,6 @@
 # wallpaper
 ~/.fehbg &
 
-# transparencias
-# if [ "$(command -v picom)" != "" ]
-# then
-#     picom --config ~/.config/picom/picom.conf &
-# else if [ "$(command -v compton)" != "" ]
-# then
-#     compton --config ~/.config/picom/picom.conf &
-# fi
-
 [ "$(command -v picom)" != "" ] && picom --config ~/.config/picom/picom.conf &
 [ "$(command -v compton)" != "" ] && compton --config ~/.config/picom/picom.conf &
 
@@ -33,6 +24,10 @@ unclutter --timeout 15 &
 
 # idioma del teclado
 # setxkbmap -layout la-latin1 &
+
+# usar caps como ctrl y esc. como ctrl al usarlo junto a otra tecla
+setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape' &
+
 
 # fonts
 xset +fp /home/dhas/.fonts

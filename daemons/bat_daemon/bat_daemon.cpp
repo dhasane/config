@@ -26,7 +26,6 @@ class bat_daemon : public Daemon{
     std::string statePrev;
     std::string state;
 
-
     std::string bat_l;   // battery
     std::string status_l;  // status file
     std::string now_l;   // actual charge
@@ -83,7 +82,7 @@ class bat_daemon : public Daemon{
         system( ( (std::string) "notify-send "+txt ).c_str( )  );
     }
 
-    std::string get_file_value ( std::string file_name ) {
+    inline std::string get_file_value ( std::string file_name ) {
         std::string value = "";
 
         std::ifstream myfile;
@@ -107,4 +106,3 @@ int main(int argc, char *argv[])
     bat_daemon( argc > 0 ? argv[1] : "/sys/class/power_supply/BAT0" , 30, 0.1 );
     return EXIT_SUCCESS;
 }
-

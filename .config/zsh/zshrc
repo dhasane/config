@@ -210,15 +210,9 @@ bindkey "^?" backward-delete-char
 # theme
 #######
 
-# if [[ $DISPLAY ]]; then
-	# source ~/.config/zsh/themes/inicial.zsh
-	# source ~/.config/zsh/themes/awesome.theme
-# else
-	# tema mas simple para la terminal
-    # y curiosamente el que mejor sirve
-	source ~/.config/zsh/themes/tty.zsh
-# fi
+source ~/.config/zsh/themes/tty.zsh
 
+# PS1="> "
 
 #######
 # otros
