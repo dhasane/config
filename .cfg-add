@@ -19,6 +19,7 @@
 .ssh/
 .gitconfig
 .gitmodules
+ .gitglobalignore
 .profile
 .tmux.conf
 .xinitrc
