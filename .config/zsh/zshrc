@@ -214,6 +214,7 @@ source ~/.config/zsh/themes/tty.zsh
 # PS1="> "
 
 
+# PS1="> "
 
 #######
 # otros

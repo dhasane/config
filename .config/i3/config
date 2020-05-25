@@ -41,7 +41,6 @@ new_window pixel 1
 new_float normal
 
 workspace_layout tabbed
-
 title_align center
 
 #################################

@@ -9,8 +9,8 @@
 # wallpaper
 ~/.fehbg &
 
-# transparencias
-picom --config ~/.config/picom/picom.conf &
+[ "$(command -v picom)" != "" ] && picom --config ~/.config/picom/picom.conf &
+[ "$(command -v compton)" != "" ] && compton --config ~/.config/picom/picom.conf &
 
 # colores sacados del fondo de pantalla
 wal -Rs &
@@ -20,10 +20,14 @@ unclutter --timeout 15 &
 
 # battery daemon
 # mostrar advertencia cuando la bateria este en 10%
-~/daemons/bat
+~/daemons/bin/bat_daemon /sys/class/power_supply/BAT*
 
 # idioma del teclado
 # setxkbmap -layout la-latin1 &
+
+# usar caps como ctrl y esc. como ctrl al usarlo junto a otra tecla
+setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape' &
+
 
 # fonts
 xset +fp /home/dhas/.fonts
@@ -34,5 +38,4 @@ xset fp rehash
 #exec dwm
 exec i3
 # exec sway
-# exec gnome-desktop
 # exec startxfce4
