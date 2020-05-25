@@ -85,7 +85,9 @@ def graficar(crds):
     """ grafica con base a los diccionarios de coordenadas que se le pasen """
     # para conseguir la columna entera
     def get(pos, arr):
-        return list(map(lambda c: float(c[pos]), arr))
+        return list(map(
+            lambda c: float(c[pos]) if c[pos] != '' else 0, arr
+        ))
 
     i = 1
     plt.rcParams.update({'font.size':22})
