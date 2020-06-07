@@ -21,6 +21,8 @@
 .gitmodules
  .gitglobalignore
 .profile
+.zprofile
+.xmonad
 .tmux.conf
 .xinitrc
 .vimrc

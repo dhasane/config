@@ -16,7 +16,9 @@
 wal -Rs &
 
 # quitar el mouse cuando no se use
-unclutter --timeout 15 &
+# unclutter --timeout 15 &
+# al parecer en ubuntu se tiene esta notacion
+unclutter -idle 15 &
 
 # battery daemon
 # mostrar advertencia cuando la bateria este en 10%
@@ -28,6 +30,8 @@ unclutter --timeout 15 &
 # usar caps como ctrl y esc. como ctrl al usarlo junto a otra tecla
 setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape' &
 
+# notifications
+dunst &
 
 # fonts
 xset +fp /home/dhas/.fonts
@@ -37,5 +41,6 @@ xset fp rehash
 
 #exec dwm
 exec i3
+# exec xmonad
 # exec sway
 # exec startxfce4

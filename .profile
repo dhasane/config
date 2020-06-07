@@ -11,11 +11,14 @@ fi
   # export FILE="pcmanfm"
   export FILE="thunar"
 
-  export PATH="${PATH}:${HOME}/scripts"
+  export PATH="$PATH:$HOME/scripts"
 
-  export PATH="${PATH}:${HOME}/.local/bin/"
+  export PATH="$PATH:$HOME/.local/bin/"
 
-  export PATH="${PATH}:${HOME}/.gem/ruby/2.7.0/bin"
+  # lenguajes
 
-  export PATH="${PATH}:${HOME}/inst/flutter/bin"
+  export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
 
+  export PATH="$PATH:$HOME/inst/flutter/bin"
+
+  export PATH="$PATH:$HOME/.cargo/bin"

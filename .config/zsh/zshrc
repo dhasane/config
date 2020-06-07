@@ -42,7 +42,7 @@ if [[ $DISPLAY ]]; then
 
     # deberia ponerle una condicion adicional a esto
     # para poder comenzarlo sin tmux en ocasiones especificas
-    [[ -z "$TMUX" ]] && exec tmux new -A -s Init
+    # [[ -z "$TMUX" ]] && exec tmux new -A -s Init
 
 else
 	# silenciar los sonidos de muerte de la tty
