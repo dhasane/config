@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-import matplotlib.pyplot as mtpl
+import matplotlib.pyplot as plt
 import numpy as np
 
 def prt_coordenadas(crds):
@@ -83,23 +83,26 @@ def tablas_a_coordenadas(grfs):
 
 def graficar(crds):
     """ grafica con base a los diccionarios de coordenadas que se le pasen """
-    mtpl.xlabel("hola")
-    i = 1
-
+    # para conseguir la columna entera
     def get(pos, arr):
-        return list(map(lambda c: float(c[pos]), arr))
+        return list(map(
+            lambda c: float(c[pos]) if c[pos] != '' else 0, arr
+        ))
 
-    #  print(crds['header'][0])
+    i = 1
+    plt.rcParams.update({'font.size':22})
     for cnt in crds['contenido']:
         nombre = crds['header'][0] + '-' + crds['header'][i]
 
-        fig = mtpl.figure()
-
+        fig = plt.figure(
+            figsize=(22, 16),
+            dpi=80
+        )
         # creo que falta especificar la escala
 
-        mtpl.xlabel(crds['header'][0])
-        mtpl.ylabel(crds['header'][i])
-        mtpl.title(nombre)
+        plt.xlabel(crds['header'][0])
+        plt.ylabel(crds['header'][i])
+        plt.title(nombre)
 
 
         #  mtpl.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
@@ -110,16 +113,29 @@ def graficar(crds):
         yerr = get('errory', cnt)
         xerr = get('errorx', cnt)
 
-        mtpl.scatter(x_values, y_values)
-        mtpl.errorbar(
+        # barras de error
+        plt.errorbar(
             x_values, y_values, xerr=xerr, yerr=yerr,
             color='red',
-            linestyle="None"
+            linestyle="None",
+            zorder=10
+        )
+        # puntos
+        plt.scatter(
+            x_values, y_values,
+            s=50,
+            zorder=5
+        )
+        # lineas
+        plt.plot(
+            x_values, y_values,
+            zorder=0,
+            color="black"
         )
 
         fig.savefig(nombre + '.png')
         i += 1
 
 for grf in tablas_a_coordenadas(leer_archivo(sys.argv[1])):
-    map(prt_coordenadas, grf)
+    prt_coordenadas(grf)
     graficar(grf)

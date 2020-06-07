@@ -40,9 +40,8 @@ hide_edge_borders none
 new_window pixel 1
 new_float normal
 
-# workspace_layout tabbed
-
-# title_align center
+workspace_layout tabbed
+title_align center
 
 #################################
 # binds
@@ -389,5 +388,5 @@ bindsym $mod+bar [instance="telegram-desktop"] scratchpad show
 # bindsym $mod+less [con_mark="stfloat"] scratchpad show
 
 # poner una condicion para esto
-# bindsym $mod+less [class="St"] scratchpad show
-bindsym $mod+semicolon [class="St"] scratchpad show
+bindsym $mod+less [class="St"] scratchpad show
+# bindsym $mod+semicolon [class="St"] scratchpad show

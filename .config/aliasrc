@@ -16,6 +16,9 @@ alias peso='du -shx ./{*,.*} | sort -rh'
 alias cont='cd $(continuar)'
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias gis='git status'
+alias gco='git checkout'
+
 alias config-add='cd ~ ; config add $( cat ~/.cfg-add ); cd -; config status'
 
 alias pacu='sudo pacman -Syuu'
