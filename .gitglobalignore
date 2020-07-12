@@ -1,3 +1,4 @@
 **/javac.*.args
 **/#*#
 **/.ccls-cache
+**/.vim

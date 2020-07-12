@@ -21,17 +21,29 @@ fi
 #   export TERMINAL="st"
 #fi
 
-[ "$(command -v nvim)" != "" ] && export EDITOR="nvim"
-[ "$(command -v firefox)" != "" ] && export BROWSER="firefox"
-
-#  export FILE="pcmanfm"
-#  export FILE="thunar"
+if_exists_export()
+{
+    program=$1
+    as=$2
+    [ "$(command -v $program)" != "" ] && export $as="$program"
+}
 
 # incluir en PATH en caso de existir
 add_to_path()
 {
     [ -d "$1" ] && PATH="$1:$PATH"
 }
+
+if_exists_export nvim EDITOR
+if_exists_export firefox BROWSER
+# [ "$(command -v nvim)" != "" ] && export EDITOR="nvim"
+# [ "$(command -v firefox)" != "" ] && export BROWSER="firefox"
+
+#  export FILE="pcmanfm"
+#  export FILE="thunar"
+
+# PATH ------------------------------
+
 add_to_path $HOME/scripts
 add_to_path $HOME/bin
 add_to_path $HOME/.local/bin
@@ -40,3 +52,6 @@ add_to_path $HOME/.gem/ruby/2.7.0/bin
 add_to_path $HOME/inst/flutter/bin
 add_to_path $HOME/.cargo/bin
 add_to_path "~/dragonruby/dragonruby"
+
+
+if [ -e /home/dhas/.nix-profile/etc/profile.d/nix.sh ]; then . /home/dhas/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
