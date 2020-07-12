@@ -22,3 +22,4 @@ fi
   export PATH="$PATH:$HOME/inst/flutter/bin"
 
   export PATH="$PATH:$HOME/.cargo/bin"
+if [ -e /home/dhas/.nix-profile/etc/profile.d/nix.sh ]; then . /home/dhas/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

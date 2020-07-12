@@ -108,13 +108,13 @@ setprompt () {
     local   espacio='${(e)PR_FILLBAR}'                              # espacio de relleno
     local     caret='%{$fg_bold[$CARETCOLOR]%}> %{$reset_color%}'   # el simbolo para escribir
     if [[ -n $SSH_CONNECTION ]]; then
-      local     filer='<--------->'
+      local     filler='[---ssh---]'
     else
-      local     filer='           '
+      local     filler='           '
     fi
 
 PROMPT="
- ${user}${at}${host}${conector}${ubicacion}${filer}${espacio}${gits}
+ ${user}${at}${host}${conector}${ubicacion}${filler}${espacio}${gits}
 ${caret}"
 
 }
