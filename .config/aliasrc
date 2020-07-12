@@ -15,13 +15,13 @@ alias duck="mono ~/.steam/steam/steamapps/common/Duck\ Game/DuckGame.exe"
 alias peso='du -shx ./{*,.*} | sort -rh'
 alias cont='cd $(continuar)'
 
+# git
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias gis='git status'
 alias gco='git checkout'
 
 alias config-add='cd ~ ; config add $( cat ~/.cfg-add ); cd -; config status'
 
-alias pacu='sudo pacman -Syuu'
 upd_pacman()
 {
     sudo pacman -Syu
@@ -30,6 +30,7 @@ upd_pacman()
     printf "\n\n Terminada actualización aur \n\n"
     purgetheorphans
 }
+
 upd_ubuntu()
 {
     sudo apt update
@@ -40,16 +41,20 @@ upd_ubuntu()
 
 upd()
 {
-    if [ "$(command -v pacman)" != "" ]
-    then
+    if [ "$(command -v pacman)" != "" ]; then
         echo "actualizando Arch"
         upd_pacman
-    fi
-    if [ "$(command -v apt)" != "" ]
-    then
+    elif [ "$(command -v apt)" != "" ]; then
         echo "actualizando Debian"
         upd_ubuntu
     fi
+}
+
+# this or that: usar la primera opcion en caso de ser posible, de lo contrario
+# usar la segunda
+_t_o_t()
+{
+    echo "TODO"
 }
 
 alias cd=" cd" # no es necesario que cada cd aparezca en historia
@@ -89,9 +94,6 @@ alias gis='git status'
 alias gca='git commit -a'
 alias gco='git checkout'
 
-# programas
-alias qb=qutebrowser
-
 # evitar abrir vim dentro de vim
 open_vim()
 {
@@ -108,6 +110,7 @@ open_vim()
 }
 
 alias e='TERM=xterm-256color emacs -nw'
+alias ec='TERM=xterm-256color emacsclient -nw'
 alias v=' open_vim'
 alias vim=' open_vim'
 alias sv='sudo nvim'
@@ -123,12 +126,11 @@ alias goto=". goto"
 alias whats='xdg-open https://web.whatsapp.com/'
 alias yt=youtube
 alias opgit="xdg-open https://github.com/dhasane"
-
 alias dmusic='youtube-dl --extract-audio -i --audio-format mp3 ' # aqui va el link  # descargar musica
 
 # lenguajes
 
-# construir con cmake
+# construir con make
 alias mk=make
 alias db='
 	if [ ! -d build ]

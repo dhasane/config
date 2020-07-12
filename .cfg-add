@@ -14,7 +14,6 @@
 .config/rofi/
 .config/tmux/tmux.conf
 .config/zsh/
-.dwarffortress/
 .fonts/
 .ssh/
 .gitconfig
