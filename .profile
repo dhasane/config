@@ -21,28 +21,37 @@ fi
 #   export TERMINAL="st"
 #fi
 
+# el primer argumento es la variable
+# los argumentos de 2 .. N son los programas
+# que se intentaran poner como esta variable
+# en caso de encontrarse en el sistema
+# sirve para poner programas de fallback
 if_exists_export()
 {
-    program=$1
-    as=$2
-    [ "$(command -v $program)" != "" ] && export $as="$program"
+    as=$1
+    for i in {2..$#}
+    do
+        program=$@[${i}]
+        [ "$(command -v $program)" != "" ] && export $as="$program" && break
+    done
 }
 
-# incluir en PATH en caso de existir
-add_to_path()
-{
-    [ -d "$1" ] && PATH="$1:$PATH"
-}
-
-if_exists_export nvim EDITOR
-if_exists_export firefox BROWSER
-# [ "$(command -v nvim)" != "" ] && export EDITOR="nvim"
-# [ "$(command -v firefox)" != "" ] && export BROWSER="firefox"
+if_exists_export TERMINAL alacritty
+if_exists_export EDITOR emacsclient nvim vim vi
+if_exists_export BROWSER firefox
 
 #  export FILE="pcmanfm"
 #  export FILE="thunar"
 
 # PATH ------------------------------
+
+# incluir en PATH en caso de existir
+add_to_path()
+{
+    # verifica que no este en el path
+    # y que el directorio exista
+    [[ $PATH != *"$1"(:*|) ]] && [ -d "$1" ] && PATH="$1:$PATH"
+}
 
 add_to_path $HOME/scripts
 add_to_path $HOME/bin
@@ -51,7 +60,9 @@ add_to_path $HOME/.local/bin
 add_to_path $HOME/.gem/ruby/2.7.0/bin
 add_to_path $HOME/inst/flutter/bin
 add_to_path $HOME/.cargo/bin
-add_to_path "~/dragonruby/dragonruby"
+add_to_path $HOME/dragonruby/dragonruby
 
+# $HOME/scripts/ssh-agent-autostart.sh
 
 if [ -e /home/dhas/.nix-profile/etc/profile.d/nix.sh ]; then . /home/dhas/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+

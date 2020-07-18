@@ -20,6 +20,23 @@
 [[ $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
+# The following lines were added by compinstall
+# posibilidades:
+# _correct
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
+zstyle :compinstall filename '/home/dhas/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=10000
+setopt autocd extendedglob nomatch notify
+unsetopt beep
+bindkey -e
 
 
 # If you come from bash you might have to change your $PATH.
@@ -113,11 +130,6 @@ src() {
 	[[ -n "$SHELL" ]] && exec ${SHELL#-} || exec zsh
 }
 
-# limpiar la pantalla y el historial de tmux
-# clean() {
-#     clear ; tmux clear-history
-# }
-
 ########
 # binds
 ########
@@ -135,7 +147,7 @@ bindkey '^e' edit-command-line
 # bindkey "^[[B" history-search-forward
 
 # para mantener lo menor posible de oh my zsh, con el plan de quitarlo eventualmente
-source ~/.config/zsh/ohmyzsh
+# source ~/.config/zsh/ohmyzsh
 # sigue teniendo cosas cheveres que no se como copiar >:v
 
 #

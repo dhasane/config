@@ -2,6 +2,7 @@
 .Xresources
 .bashrc
 .config/aliasrc
+.config/alacritty
 .config/conky.conf
 .config/dunst/
 .config/herbstluftwm/
