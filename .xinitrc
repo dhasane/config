@@ -25,13 +25,14 @@ unclutter -idle 15 &
 ~/daemons/bin/bat_daemon /sys/class/power_supply/BAT*
 
 # idioma del teclado
-# setxkbmap -layout la-latin1 &
+setxkbmap -layout la-latin1 &
 
 # usar caps como ctrl y esc. como ctrl al usarlo junto a otra tecla
 setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape' &
+# localectl set-x11-keymap es grp:lctrl_lshift_toggle &
 
 # notifications
-dunst &
+# dunst &
 
 # fonts
 xset +fp /home/dhas/.fonts
@@ -40,7 +41,7 @@ xset fp rehash
 # iniciar el wm
 
 #exec dwm
-# exec i3
+exec i3
 # exec xmonad
-exec sway
+# exec sway
 # exec startxfce4
