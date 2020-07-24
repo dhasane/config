@@ -9,7 +9,6 @@
 	minRacyThreshold = 0 nanoseconds
 [diff]
 	tool = vimdiff
-	; tool = nvim
 [difftool]
 	prompt = false
 [alias]

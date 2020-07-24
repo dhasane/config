@@ -43,7 +43,11 @@ bindkey -e
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/$USER/.oh-my-zsh"
+[ -d "/home/$USER/.oh-my-zsh" ] && export ZSH="/home/$USER/.oh-my-zsh"
+
+# para mantener lo menor posible de oh my zsh, con el plan de quitarlo eventualmente
+[ -d "~/.config/zsh/ohmyzsh" ] && source ~/.config/zsh/ohmyzsh
+# sigue teniendo cosas cheveres que no se como copiar >:v
 
 stty -ixon
 
@@ -145,10 +149,6 @@ bindkey '^e' edit-command-line
 # bindkey "^[[A" history-search-backward
 #
 # bindkey "^[[B" history-search-forward
-
-# para mantener lo menor posible de oh my zsh, con el plan de quitarlo eventualmente
-# source ~/.config/zsh/ohmyzsh
-# sigue teniendo cosas cheveres que no se como copiar >:v
 
 #
 # plugins=(

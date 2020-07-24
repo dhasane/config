@@ -22,6 +22,8 @@ alias gco='git checkout'
 
 alias config-add='cd ~ ; config add $( cat ~/.cfg-add ); cd -; config status'
 
+alias ssh='eval `keychain --eval --agents ssh ~/.ssh/id_rsa`; ssh'
+
 upd_pacman()
 {
     sudo pacman -Syu
