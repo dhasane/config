@@ -38,6 +38,9 @@ setopt autocd extendedglob nomatch notify
 unsetopt beep
 bindkey -e
 
+# poner ctrl en caps
+# setxkbmap -option 'caps:ctrl_modifier' &
+# xcape -e 'Caps_Lock=Escape' &
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH

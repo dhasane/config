@@ -74,5 +74,3 @@ mat = [ [ None , 13 , 20, 10,  None,  None,  None, None, None, None ],
 nombres = [ 'o', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i' ]
 ret = arbol_minima_expancion(mat, nombres, 0 )
 prt(ret)
-
-

@@ -4,6 +4,7 @@
 # 	simonoff
 
 # me gustaria pensar una mejor manera de mostrar el modo de uso
+# --------------------------------------------------------------------------------------------
 
 # vim_ins_mode="%{$fg_bold[cyan]%}[INS]%{$reset_color%}"
 vim_cmd_mode="%{$fg_bold[green]%}[CMD]%{$reset_color%}"
@@ -23,9 +24,10 @@ function zle-line-finish {
 }
 zle -N zle-line-finish
 
-
-# Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode indicator, while in fact you would be in INS mode
-# Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the SIGINT, so if anything else depends on it, we will not break it
+# Fix a bug when you C-c in CMD mode and you'd be prompted with CMD mode
+# indicator, while in fact you would be in INS mode
+# Fixed by catching SIGINT (C-c), set vim_mode to INS and then repropagate the
+# SIGINT, so if anything else depends on it, we will not break it
 # Thanks Ron! (see comments)
 function TRAPINT() {
   vim_mode=$vim_ins_mode
@@ -33,10 +35,7 @@ function TRAPINT() {
 }
 
 # hasta aqui va el modo vi
-
-
-# if [ "$USER" = "root" ]; then CARETCOLOR="red"; else CARETCOLOR="magenta"; fi
-CARETCOLOR="magenta"
+# --------------------------------------------------------------------------------------------
 
 # Prompt
 #
@@ -96,6 +95,9 @@ setprompt () {
     PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
 
+    # if [ "$USER" = "root" ]; then CARETCOLOR="red"; else CARETCOLOR="magenta"; fi
+    CARETCOLOR="magenta"
+
 ###
 # The prompt.
 
@@ -108,13 +110,13 @@ setprompt () {
     local   espacio='${(e)PR_FILLBAR}'                              # espacio de relleno
     local     caret='%{$fg_bold[$CARETCOLOR]%}> %{$reset_color%}'   # el simbolo para escribir
     if [[ -n $SSH_CONNECTION ]]; then
-      local     filler='[---ssh---]'
+      local     filler='%{$fg_bold[magenta]%}[---ssh---]%{$reset_color%}'
     else
       local     filler='           '
     fi
 
 PROMPT="
- ${user}${at}${host}${conector}${ubicacion}${filler}${espacio}${gits}
+ ${user}${at}${host}${conector}${ubicacion}${espacio}${filler}${gits}
 ${caret}"
 
 }

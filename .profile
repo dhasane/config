@@ -9,12 +9,12 @@
 #umask 022
 
 # if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
+# if [ -n "$BASH_VERSION" ]; then
+#     # include .bashrc if it exists
+#     if [ -f "$HOME/.bashrc" ]; then
+# 	. "$HOME/.bashrc"
+#     fi
+# fi
 
 #if [[ $DISPLAY ]]; then
 #   export TERM="st"
@@ -28,20 +28,18 @@ fi
 # sirve para poner programas de fallback
 if_exists_export()
 {
-    as=$1
     for i in {2..$#}
     do
-        program=$@[${i}]
-        [ "$(command -v $program)" != "" ] && export $as="$program" && break
+        [ "$(command -v $@[$i])" != "" ] &&
+            export $1="$@[$i]" &&
+            break
     done
 }
 
-if_exists_export TERMINAL alacritty
+if_exists_export TERMINAL alacritty st
 if_exists_export EDITOR emacsclient nvim vim vi
 if_exists_export BROWSER firefox
-
-#  export FILE="pcmanfm"
-#  export FILE="thunar"
+if_exists_export FILE thunar pcmanfm
 
 # PATH ------------------------------
 
@@ -50,7 +48,8 @@ add_to_path()
 {
     # verifica que no este en el path
     # y que el directorio exista
-    [[ $PATH != *"$1"(:*|) ]] && [ -d "$1" ] && PATH="$1:$PATH"
+    # [[ $PATH != *$1(:*|) ]] &&
+        [ -d "$1" ] && PATH="$1:$PATH"
 }
 
 add_to_path $HOME/scripts
@@ -64,5 +63,4 @@ add_to_path $HOME/dragonruby/dragonruby
 
 # $HOME/scripts/ssh-agent-autostart.sh
 
-if [ -e /home/dhas/.nix-profile/etc/profile.d/nix.sh ]; then . /home/dhas/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

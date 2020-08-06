@@ -58,8 +58,10 @@ title_align center
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec $TERMINAL
-bindsym $mod+c exec $TERMINAL
+# bindsym $mod+Return exec $TERMINAL
+# bindsym $mod+c exec $TERMINAL
+bindsym $mod+Return exec "alacritty"
+bindsym $mod+c exec "alacritty"
 # bindsym $mod+Return exec "st"
 # bindsym $mod+c exec "st"
 # por alguna razon esto dejo de funcionar
