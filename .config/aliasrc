@@ -28,8 +28,10 @@ upd_pacman()
 {
     sudo pacman -Syu
     printf "\n\n Terminada actualización pacman \n\n\n"
-    yay -Syu
-    printf "\n\n Terminada actualización aur \n\n"
+
+    [ "$(command -v yay)" != "" ] && yay -Syu &&
+        printf "\n\n Terminada actualización aur \n\n"
+
     purgetheorphans
 }
 
