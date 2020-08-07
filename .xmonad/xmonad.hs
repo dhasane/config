@@ -185,8 +185,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
+    , ((modm, -- .|. shiftMask,
+        xK_b ), io (exitWith ExitSuccess))
+
     , ((modm .|. shiftMask,
-        0               ), io (exitWith ExitSuccess))
+        xK_e            ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
     , ((modm .|. shiftMask,
@@ -410,7 +413,7 @@ main = do
         startupHook        = myStartupHook
     }
         `additionalKeys`
-        [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
+        [ ((mod4Mask .|. shiftMask, xK_0), spawn "xscreensaver-command -lock")
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
         ]

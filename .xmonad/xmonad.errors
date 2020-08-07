@@ -1,16 +1,16 @@
 
-xmonad.hs:346:12: warning: [-Wdeprecations]
+xmonad.hs:349:12: warning: [-Wdeprecations]
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
     |
-346 | defaults = defaultConfig {
+349 | defaults = defaultConfig {
     |            ^^^^^^^^^^^^^
 
-xmonad.hs:388:20: warning: [-Wdeprecations]
+xmonad.hs:391:20: warning: [-Wdeprecations]
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
     |
-388 |     xmonad $ docks defaultConfig
+391 |     xmonad $ docks defaultConfig
     |                    ^^^^^^^^^^^^^

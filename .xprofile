@@ -1,0 +1,25 @@
+#!/bin/sh
+
+[ -f "$HOME/.profile" ] && . "$HOME/.profile"
+
+#[[ -f ~/.Xresources ]] && xrdb -merge -I $HOME ~/.Xresources
+# [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
+
+# wallpaper
+~/.fehbg &
+
+[ "$(command -v picom)" != "" ] && picom --config ~/.config/picom/picom.conf &
+[ "$(command -v compton)" != "" ] && compton --config ~/.config/picom/picom.conf &
+
+# colores sacados del fondo de pantalla
+# wal -Rs &
+
+# quitar el mouse cuando no se use
+# unclutter --timeout 15 &
+# al parecer en ubuntu se tiene esta notacion
+unclutter -idle 15 &
+
+# battery daemon
+# mostrar advertencia cuando la bateria este en 10%
+~/daemons/bin/bat_daemon /sys/class/power_supply/BAT*
+

@@ -1,3 +1,4 @@
+#!/bin/sh
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -16,27 +17,35 @@
 #     fi
 # fi
 
-#if [[ $DISPLAY ]]; then
-#   export TERM="st"
-#   export TERMINAL="st"
-#fi
-
 # el primer argumento es la variable
 # los argumentos de 2 .. N son los programas
 # que se intentaran poner como esta variable
 # en caso de encontrarse en el sistema
 # sirve para poner programas de fallback
+# if_exists_export()
+# {
+#     for i in {2..$#} # esto sirve con zsh
+#     do
+#         [ "$(command -v $@[$i])" != "" ] &&
+#             export $1="$@[$i]" &&
+#             break
+#     done
+# }
+
+# https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
 if_exists_export()
 {
-    for i in {2..$#}
+    # esto no sirve en zsh
+    for i in ${@:2} # todo desde el segundo argumento
     do
-        [ "$(command -v $@[$i])" != "" ] &&
-            export $1="$@[$i]" &&
+        [ "$(command -v "$i")" != "" ] &&
+            export "$1"="$i" &&
             break
     done
 }
 
 if_exists_export TERMINAL alacritty st
+if_exists_export TERM alacritty st
 if_exists_export EDITOR emacsclient nvim vim vi
 if_exists_export BROWSER firefox
 if_exists_export FILE thunar pcmanfm
@@ -52,15 +61,15 @@ add_to_path()
         [ -d "$1" ] && PATH="$1:$PATH"
 }
 
-add_to_path $HOME/scripts
-add_to_path $HOME/bin
-add_to_path $HOME/.local/bin
+add_to_path "$HOME"/scripts
+add_to_path "$HOME"/bin
+add_to_path "$HOME"/.local/bin
 #  # lenguajes
-add_to_path $HOME/.gem/ruby/2.7.0/bin
-add_to_path $HOME/inst/flutter/bin
-add_to_path $HOME/.cargo/bin
-add_to_path $HOME/dragonruby/dragonruby
+add_to_path "$HOME"/.gem/ruby/2.7.0/bin
+add_to_path "$HOME"/inst/flutter/bin
+add_to_path "$HOME"/.cargo/bin
+add_to_path "$HOME"/dragonruby/dragonruby
 
 # $HOME/scripts/ssh-agent-autostart.sh
 
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e "$HOME"/.nix-profile/etc/profile.d/nix.sh ]; then . "$HOME"/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
