@@ -22,6 +22,7 @@ import Data.Monoid
 import System.Exit
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
@@ -86,8 +87,6 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
--- myNormalBorderColor  = "#dddddd"
--- myFocusedBorderColor = "#ff0000"
 myNormalBorderColor  = "#cccccc"
 myFocusedBorderColor = "#cd8b00"
 
@@ -97,7 +96,8 @@ myFocusedBorderColor = "#cd8b00"
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch a terminal
-    [ ((modm .|. shiftMask,
+    [
+      ((modm .|. shiftMask,
         xK_Return       ), spawn $ XMonad.terminal conf)
 
     , ((modm,
@@ -106,7 +106,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch dmenu
     -- , ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
     , ((modm,
-        xK_d            ), spawn "rofi -show drun -font \"monoid regular 10\"")
+        xK_d            ), spawn "rofi -show combi -font \"monoid regular 10\"")
     , ((modm,
         xK_s            ), spawn "rofi -show window -font \"monoid regular 10\"")
 
@@ -184,9 +184,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --
     -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
-    -- Quit xmonad
-    , ((modm, -- .|. shiftMask,
-        xK_b ), io (exitWith ExitSuccess))
+    , ((modm .|. shiftMask,
+        xK_0 ), io (exitWith ExitSuccess))
 
     , ((modm .|. shiftMask,
         xK_e            ), io (exitWith ExitSuccess))
@@ -194,6 +193,15 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Restart xmonad
     , ((modm .|. shiftMask,
         xK_r            ), spawn "xmonad --recompile; xmonad --restart")
+
+    , ((modm .|. shiftMask,
+        xK_r            ), spawn "xmonad --recompile; xmonad --restart")
+    -- , ((modm .|. shiftMask, xK_0), spawn "xscreensaver-command -lock")
+    , ((modm,
+        xK_Print        ), spawn  "scrot -e 'mv $f ~/Screenshots/.'; notify-send 'screenshot taken'")
+    , ((modm .|. shiftMask,
+        xK_Print        ), spawn  "scrot -ue 'mv $f ~/Screenshots/.'; notify-send 'screenshot taken'")
+
     ]
     ++
 
@@ -223,7 +231,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- mod-button1, Set the window to floating mode and move by dragging
-    [ ((modm, button1), (\w -> focus w >> mouseMoveWindow w
+    [
+      ((modm, button1), (\w -> focus w >> mouseMoveWindow w
                                        >> windows W.shiftMaster))
 
     -- mod-button2, Raise the window to the top of the stack
@@ -283,7 +292,8 @@ myLayout = simpleTabbed ||| tiled ||| Mirror tiled ||| Full
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
+    [
+      className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore
@@ -388,32 +398,39 @@ defaults = defaultConfig {
 
 main = do
     xmproc <- spawnPipe "xmobar"
-    xmonad $ docks defaultConfig
+    -- xmonad $ docks defaultConfig
+    xmonad $ ewmh def
         {
-      -- simple stuff
-        terminal           = myTerminal,
-        focusFollowsMouse  = myFocusFollowsMouse,
-        borderWidth        = myBorderWidth,
-        modMask            = myModMask,
-        -- numlockMask deprecated in 0.9.1
-        -- numlockMask        = myNumlockMask,
-        workspaces         = myWorkspaces,
-        normalBorderColor  = myNormalBorderColor,
-        focusedBorderColor = myFocusedBorderColor,
+          -- simple stuff
+          terminal           = myTerminal
+        , focusFollowsMouse  = myFocusFollowsMouse
+        , borderWidth        = myBorderWidth
+        , modMask            = myModMask
+          -- numlockMask deprecated in 0.9.1
+                               -- numlockMask        = myNumlockMask,
+        , workspaces         = myWorkspaces
+        , normalBorderColor  = myNormalBorderColor
+        , focusedBorderColor = myFocusedBorderColor
 
-      -- key bindings
-        keys               = myKeys,
-        mouseBindings      = myMouseBindings,
+          -- key bindings
+        , keys               = myKeys
+        , mouseBindings      = myMouseBindings
 
-      -- hooks, layouts
-        layoutHook         = myLayout,
-        manageHook         = myManageHook,
-        handleEventHook    = myEventHook,
-        logHook            = myLogHook,
-        startupHook        = myStartupHook
-    }
-        `additionalKeys`
-        [ ((mod4Mask .|. shiftMask, xK_0), spawn "xscreensaver-command -lock")
-        , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
-        , ((0, xK_Print), spawn "scrot")
-        ]
+          -- hooks, layouts
+        , layoutHook         = avoidStruts $ myLayout
+        , manageHook         = myManageHook
+        -- , handleEventHook    = myEventHook
+        , handleEventHook = mconcat
+                            [
+                              docksEventHook
+                            , handleEventHook defaultConfig
+                            ]
+        , logHook            = dynamicLogWithPP xmobarPP
+        , startupHook        = myStartupHook
+        }
+        -- `additionalKeys`
+        -- [
+        --   ((mod4Mask .|. shiftMask, xK_0), spawn "xscreensaver-command -lock")
+        -- , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
+        -- , ((0, xK_Print), spawn "scrot")
+        -- ]
