@@ -12,10 +12,11 @@
 # notifications
 # dunst &
 
-# fonts
-#xset +fp /home/dhas/.fonts
-#xset fp rehash
+# wallpaper
+feh ~/.fehbg &
 
+
+source ~/.xprofile
 # iniciar el wm
 
 #exec dwm

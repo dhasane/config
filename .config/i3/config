@@ -78,7 +78,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 #bindsym $mod+d exec i3-dmenu-desktop
-bindsym $mod+d exec rofi -show drun -font "monoid regular 10"
+bindsym $mod+d exec rofi -show combi -font "monoid regular 10"
 bindsym $mod+Shift+d exec rofi -show run -font "monoid regular 10"
 # bindsym $mod+g exec rofi -show window -theme oxide -font "monoid regular 10" # me gusta este tema
 bindsym $mod+g exec --no-startup-id "~/.config/i3/scripts/mover.sh"
@@ -337,10 +337,12 @@ bar {
 #################################
 
 # brightness settings
-# bindsym XF86MonBrightnessUp exec xbacklight + 5
-# bindsym XF86MonBrightnessDown exec xbacklight - 5
-bindsym XF86MonBrightnessUp exec acpilight + 5
-bindsym XF86MonBrightnessDown exec acpilight - 5
+bindsym XF86MonBrightnessUp exec xbacklight + 5
+bindsym XF86MonBrightnessDown exec xbacklight - 5
+# bindsym XF86MonBrightnessUp exec acpilight + 5
+# bindsym XF86MonBrightnessDown exec acpilight - 5
+
+bindsym XF86Sleep exec "systemctl suspend"
 
 # screenshots
 bindsym Print exec "scrot -e 'mv $f ~/Screenshots'; notify-send 'screenshot taken'"
@@ -384,10 +386,11 @@ exec --no-startup-id  "sleep 2; i3-msg '[instance=telegram-desktop] move scratch
 # top-down terminal
 # podria ser interesante crearle su propia sesion para tmux
 # exec "st -e tmux new -A -s float"
-exec "$TERMINAL -e tmux new -A -s float"
+# exec --no-startup-id "echo $TERMINAL > ~/esto-es-una-prueba"
+exec --no-startup-id "$TERMINAL -e tmux new -A -s float ; sleep 0,2 ; i3-msg '[class=Alacritty] move scratchpad'" 
 # exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] mark stfloat, move scratchpad'"
 # exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] move scratchpad'"
-exec --no-startup-id  "sleep 0,2; i3-msg '[class=Alacritty] move scratchpad'"
+# exec --no-startup-id  "sleep 0,2; i3-msg '[class=Alacritty] move scratchpad'"
 
 
 # scratchpad

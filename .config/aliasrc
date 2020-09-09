@@ -33,6 +33,7 @@ upd_pacman()
         printf "\n\n Terminada actualización aur \n\n"
 
     purgetheorphans
+    printf "\n"
 }
 
 upd_ubuntu()
@@ -56,21 +57,28 @@ upd()
 
 # this or that: usar la primera opcion en caso de ser posible, de lo contrario
 # usar la segunda
-_t_o_t()
+
+if_exists_alias()
 {
-    echo "TODO"
+    for i in ${@:2} # todo desde el segundo argumento
+    do
+        [ "$(command -v "$i")" != "" ] &&
+            alias "$1"=" $i" &&
+            break
+    done
 }
 
+# foreach()
+# {
+#     for i in ${@}
+#     do 
+# 	echo "$i"
+#     done 
+# }
+
 alias cd=" cd" # no es necesario que cada cd aparezca en historia
-# alias ls=" ls"
-# alias ls=" exa"
-# alias ls="
-#     if lsd 2>/dev/null; then
-#         command 'lsd '
-#     else
-#         command 'ls '
-#     fi"
-alias l=" exa -l"
+if_exists_alias ls exa
+if_exists_alias l '" " "exa" "-l"'
 alias sudo='sudo ' # pa los alias
 alias rf=' rm -rf'
 
@@ -78,7 +86,7 @@ alias rf=' rm -rf'
 # alias russian="[ $[ $RANDOM % 6 ] = 0 ] && echo 'bang' || echo 'Lucky boi' "
 
 alias showshs="cat /etc/shells" # mostrar todos los shells disponibles
-alias changesh='echo $SHELL;showshs;chsh;sudo shutdown -r 0' # cambiar el shell
+alias changesh='echo $SHELL;showshs;chsh' # cambiar el shell
 alias se='ls /usr/bin | grep'
 
 alias usb='cd /run/media/dhas'

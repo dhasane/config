@@ -5,12 +5,19 @@
 #[[ -f ~/.Xresources ]] && xrdb -merge -I $HOME ~/.Xresources
 # [ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 
-# wallpaper
-~/.fehbg &
+# run()
+# {
+#     [ "$(command -v "$1")" != "" ] && ${@}
+# }
 
 [ "$(command -v picom)" != "" ] && picom --config ~/.config/picom/picom.conf &
-[ "$(command -v compton)" != "" ] && compton --config ~/.config/picom/picom.conf &
+# [ "$(command -v compton)" != "" ] && compton --config ~/.config/picom/picom.conf &
 
+# fonts
+#xset +fp /home/dhas/.fonts
+#xset fp rehash
+
+# source ~/.xprofile
 # colores sacados del fondo de pantalla
 # wal -Rs &
 
@@ -22,4 +29,3 @@ unclutter -idle 15 &
 # battery daemon
 # mostrar advertencia cuando la bateria este en 10%
 ~/daemons/bin/bat_daemon /sys/class/power_supply/BAT*
-

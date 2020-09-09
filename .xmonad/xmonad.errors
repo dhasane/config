@@ -1,16 +1,16 @@
 
-xmonad.hs:359:12: warning: [-Wdeprecations]
+xmonad.hs:357:12: warning: [-Wdeprecations]
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
     |
-359 | defaults = defaultConfig {
+357 | defaults = defaultConfig {
     |            ^^^^^^^^^^^^^
 
-xmonad.hs:426:47: warning: [-Wdeprecations]
+xmonad.hs:424:47: warning: [-Wdeprecations]
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
     |
-426 |                             , handleEventHook defaultConfig
+424 |                             , handleEventHook defaultConfig
     |                                               ^^^^^^^^^^^^^

@@ -3,3 +3,5 @@
 **/.ccls-cache
 **/.vim
 **/.~lock.*
+**/node_modules
+**/package-lock.json

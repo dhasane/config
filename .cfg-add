@@ -23,6 +23,8 @@
 .xprofile
 .zprofile
 .xmonad
+.xmobar
+.xmobarrc
 .tmux.conf
 .xinitrc
 .vimrc

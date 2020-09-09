@@ -23,7 +23,7 @@
 # The following lines were added by compinstall
 # posibilidades:
 # _correct
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' completer _expand _complete _ignored # _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
 zstyle :compinstall filename '/home/dhas/.zshrc'
 

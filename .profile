@@ -22,20 +22,11 @@
 # que se intentaran poner como esta variable
 # en caso de encontrarse en el sistema
 # sirve para poner programas de fallback
-# if_exists_export()
-# {
-#     for i in {2..$#} # esto sirve con zsh
-#     do
-#         [ "$(command -v $@[$i])" != "" ] &&
-#             export $1="$@[$i]" &&
-#             break
-#     done
-# }
-
-# https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
 if_exists_export()
 {
     # esto no sirve en zsh
+    # https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
+#     for i in {2..$#} # esto sirve con zsh y usar $@[$i]
     for i in ${@:2} # todo desde el segundo argumento
     do
         [ "$(command -v "$i")" != "" ] &&
@@ -49,6 +40,8 @@ if_exists_export TERM alacritty st
 if_exists_export EDITOR emacsclient nvim vim vi
 if_exists_export BROWSER firefox
 if_exists_export FILE thunar pcmanfm
+
+# export VISUAL
 
 # PATH ------------------------------
 

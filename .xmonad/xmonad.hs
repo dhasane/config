@@ -194,8 +194,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask,
         xK_r            ), spawn "xmonad --recompile; xmonad --restart")
 
-    , ((modm .|. shiftMask,
-        xK_r            ), spawn "xmonad --recompile; xmonad --restart")
     -- , ((modm .|. shiftMask, xK_0), spawn "xscreensaver-command -lock")
     , ((modm,
         xK_Print        ), spawn  "scrot -e 'mv $f ~/Screenshots/.'; notify-send 'screenshot taken'")
