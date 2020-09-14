@@ -6,15 +6,15 @@
 # setxkbmap -layout la-latin1 &
 
 # usar caps como ctrl y esc. como ctrl al usarlo junto a otra tecla
-#setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape' &
+# setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape' &
 # localectl set-x11-keymap es grp:lctrl_lshift_toggle &
 
 # notifications
 # dunst &
 
 # wallpaper
-feh ~/.fehbg &
-
+# feh ~/.fehbg &
+~/scripts/wall.rb
 
 source ~/.xprofile
 # iniciar el wm

@@ -1,6 +1,0 @@
-#!/usr/bin/env ruby
-
-puts 'PATH:'
-ENV['PATH'].split(':')
-           .sort { |a, b| a.length <=> b.length }
-           .each { |p| puts ' - ' + p }

@@ -14,11 +14,10 @@
 .config/rofi/
 .config/tmux/tmux.conf
 .config/zsh/
-.fonts/
 .ssh/config
 .gitconfig
 .gitmodules
- .gitglobalignore
+.gitglobalignore
 .profile
 .xprofile
 .zprofile
@@ -27,9 +26,6 @@
 .xmobarrc
 .tmux.conf
 .xinitrc
-.vimrc
 .zshrc
 README.md
-daemons/
-scripts/
 .cfg-add

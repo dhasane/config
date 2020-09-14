@@ -1,8 +1,0 @@
-#!/bin/sh
-
-feh --bg-fill "$@"
-betterlockscreen -u "$@" >> /dev/null # ; notify-send "lockscreen set" &
-wal -a "alpha" -s -n -i "$@"
-
-
-echo " wallpaper actualizado "

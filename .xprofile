@@ -22,10 +22,8 @@
 # wal -Rs &
 
 # quitar el mouse cuando no se use
-# unclutter --timeout 15 &
-# al parecer en ubuntu se tiene esta notacion
 unclutter -idle 15 &
 
 # battery daemon
 # mostrar advertencia cuando la bateria este en 10%
-~/daemons/bin/bat_daemon /sys/class/power_supply/BAT*
+~/scripts/daemons/bin/bat_daemon /sys/class/power_supply/BAT*

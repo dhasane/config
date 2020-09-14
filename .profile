@@ -1,21 +1,5 @@
 #!/bin/sh
 # ~/.profile: executed by the command interpreter for login shells.
-# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
-# exists.
-# see /usr/share/doc/bash/examples/startup-files for examples.
-# the files are located in the bash-doc package.
-
-# the default umask is set in /etc/profile; for setting the umask
-# for ssh logins, install and configure the libpam-umask package.
-#umask 022
-
-# if running bash
-# if [ -n "$BASH_VERSION" ]; then
-#     # include .bashrc if it exists
-#     if [ -f "$HOME/.bashrc" ]; then
-# 	. "$HOME/.bashrc"
-#     fi
-# fi
 
 # el primer argumento es la variable
 # los argumentos de 2 .. N son los programas
@@ -26,7 +10,7 @@ if_exists_export()
 {
     # esto no sirve en zsh
     # https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
-#     for i in {2..$#} # esto sirve con zsh y usar $@[$i]
+    #     for i in {2..$#} # esto sirve con zsh y usar $@[$i]
     for i in ${@:2} # todo desde el segundo argumento
     do
         [ "$(command -v "$i")" != "" ] &&

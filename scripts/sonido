@@ -1,9 +1,0 @@
-#!/bin/sh
-
-comp=$(amixer -M get Master | grep 'Left: Playback')
-
-echo "$comp"
-
-vol=$( $comp | awk '{print $4 $5}')
-echo "$vol"
-#amixer -M get Master | grep 'Left: Playback'
