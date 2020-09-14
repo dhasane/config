@@ -23,7 +23,7 @@
 # The following lines were added by compinstall
 # posibilidades:
 # _correct
-zstyle ':completion:*' completer _expand _complete _ignored # _approximate
+zstyle ':completion:*' completer _expand _complete _ignored 
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
 zstyle :compinstall filename '/home/dhas/.zshrc'
 
@@ -79,22 +79,22 @@ else
     # wal -Rsq &
 
 	# echo -en "\e]P0232323" #black
-    # echo -en "\e]P82B2B2B" #darkgrey
-    # echo -en "\e]P1D75F5F" #darkred
-    # echo -en "\e]P9E33636" #red
-    # echo -en "\e]P287AF5F" #darkgreen
-    # echo -en "\e]PA98E34D" #green
-    # echo -en "\e]P3D7AF87" #brown
-    # echo -en "\e]PBFFD75F" #yellow
-    # echo -en "\e]P48787AF" #darkblue
-    # echo -en "\e]PC7373C9" #blue
-    # echo -en "\e]P5BD53A5" #darkmagenta
-    # echo -en "\e]PDD633B2" #magenta
-    # echo -en "\e]P65FAFAF" #darkcyan
-    # echo -en "\e]PE44C9C9" #cyan
-    # echo -en "\e]P7E5E5E5" #lightgrey
-    # echo -en "\e]PFFFFFFF" #white
-    # clear     #for background artifacting
+	# echo -en "\e]P82B2B2B" #darkgrey
+	# echo -en "\e]P1D75F5F" #darkred
+	# echo -en "\e]P9E33636" #red
+	# echo -en "\e]P287AF5F" #darkgreen
+	# echo -en "\e]PA98E34D" #green
+	# echo -en "\e]P3D7AF87" #brown
+	# echo -en "\e]PBFFD75F" #yellow
+	# echo -en "\e]P48787AF" #darkblue
+	# echo -en "\e]PC7373C9" #blue
+	# echo -en "\e]P5BD53A5" #darkmagenta
+	# echo -en "\e]PDD633B2" #magenta
+	# echo -en "\e]P65FAFAF" #darkcyan
+	# echo -en "\e]PE44C9C9" #cyan
+	# echo -en "\e]P7E5E5E5" #lightgrey
+	# echo -en "\e]PFFFFFFF" #white
+	# clear     #for background artifacting
 fi
 
 
@@ -149,32 +149,6 @@ bindkey -s '^[[15~' 'sudo !!^M'
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# bindkey "^[[A" history-search-backward
-#
-# bindkey "^[[B" history-search-forward
-
-#
-# plugins=(
-#     fzf
-# dirhistory
-#
-#
-#     )
-
-    # autoload znt-history-widget
-    # zle -N znt-history-widget
-    # bindkey "^R" znt-history-widget
-
-# falta el historial por completicion
-
-# Check if the current directory is in a Git repository.
-# USAGE:
-#   spaceship::is_git
-# spaceship::is_git() {
-#   # See https://git.io/fp8Pa for related discussion
-#   [[ $(command git rev-parse --is-inside-work-tree 2>/dev/null) == true ]]
-# }
-
 # User configuration
 
 # You may need to manually set your language environment
@@ -191,7 +165,7 @@ bindkey '^e' edit-command-line
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # alias
 source ~/.config/aliasrc
@@ -229,33 +203,16 @@ bindkey "^?" backward-delete-char
 #######
 
 source ~/.config/zsh/themes/tty.zsh
-# PS1="> "
-
-
-# PS1="> "
 
 #######
 # otros
 #######
 
-# conda -> todas las mierdas de python
+# conda -> python
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
-
-# [ -f /home/dhas/.gem/ruby/2.7.0/bin ] && source /home/dhas/.gem/ruby/2.7.0/bin
-# export PATH="${PATH}:${HOME}/.gem/ruby/2.7.0/bin"
-
 
 #########
 # plugins
 #########
-
 # local zsh_plugins="$HOME/.config/zsh/plugins"
-
-# https://github.com/zsh-users/zsh-history-substring-search
-# source $zsh_plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-#
-# bindkey '^[OA' history-substring-search-up
-# bindkey '^[OB' history-substring-search-down
-
 # source $zsh_plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
