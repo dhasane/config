@@ -1,7 +1,17 @@
 #!/bin/sh
 
+# exports
+
+# ssh
+export SSH_KEY_PATH="$HOME/.private_keys/id_rsa"
+
+# eval $(keychain --eval --quiet id_ed25519 id_rsa ~/.keys/)
+# eval $(keychain --eval --quiet ~/.ssh/id_rsa )
+# eval $(keychain --eval --quiet id_rsa $SSH_KEY_PATH)
+
 # alias
 
+alias ssh='eval `keychain --eval --agents ssh $SSH_KEY_PATH`; ssh'
 alias pila="upower -d"
 alias llaves="gpg --list-secret-keys --keyid-format LONG"
 alias pantalla=arandr
@@ -22,8 +32,6 @@ alias gco='git checkout'
 
 alias config-add='cd ~ ; config add $( cat ~/.cfg-add ); cd -; config status'
 
-alias ssh='eval `keychain --eval --agents ssh ~/.ssh/id_rsa`; ssh'
-
 upd_pacman()
 {
     sudo pacman -Syu
@@ -36,7 +44,7 @@ upd_pacman()
     printf "\n"
 }
 
-upd_ubuntu()
+upd_apt()
 {
     sudo apt update
     sudo apt upgrade --fix-missing
@@ -51,13 +59,12 @@ upd()
         upd_pacman
     elif [ "$(command -v apt)" != "" ]; then
         echo "actualizando Debian"
-        upd_ubuntu
+        upd_apt
     fi
 }
 
-# this or that: usar la primera opcion en caso de ser posible, de lo contrario
+# usar la primera opcion en caso de ser posible, de lo contrario
 # usar la segunda
-
 if_exists_alias()
 {
     for i in ${@:2} # todo desde el segundo argumento
@@ -68,6 +75,9 @@ if_exists_alias()
     done
 }
 
+if_exists_alias ls exa
+if_exists_alias l '" " "exa" "-l"'
+
 # foreach()
 # {
 #     for i in ${@}
@@ -77,8 +87,6 @@ if_exists_alias()
 # }
 
 alias cd=" cd" # no es necesario que cada cd aparezca en historia
-if_exists_alias ls exa
-if_exists_alias l '" " "exa" "-l"'
 alias sudo='sudo ' # pa los alias
 alias rf=' rm -rf'
 
@@ -89,11 +97,8 @@ alias showshs="cat /etc/shells" # mostrar todos los shells disponibles
 alias changesh='echo $SHELL;showshs;chsh' # cambiar el shell
 alias se='ls /usr/bin | grep'
 
-alias usb='cd /run/media/dhas'
+alias usb='cd /run/media/$USER'
 alias clear='clear ; [[ ! -z "$TMUX" ]] && tmux clear-history ' # limpiar la pantalla y el historial de tmux
-
-# para siempre comenzar en init, evitando estar creando nuevas sesiones constantemente
-# alias tmux="tmux new -A -s Init"
 
 alias matar=pkill
 alias word='grep -rnw . -e '

@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 
 # ZZZZZZZZZZZZZZZZZZZ   SSSSSSSSSSSSSSS HHHHHHHHH     HHHHHHHHH
 # Z:::::::::::::::::Z SS:::::::::::::::SH:::::::H     H:::::::H
@@ -36,21 +37,11 @@ HISTSIZE=1000
 SAVEHIST=10000
 setopt autocd extendedglob nomatch notify
 unsetopt beep
-bindkey -e
+# bindkey -e
 
 # poner ctrl en caps
 # setxkbmap -option 'caps:ctrl_modifier' &
 # xcape -e 'Caps_Lock=Escape' &
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-[ -d "/home/$USER/.oh-my-zsh" ] && export ZSH="/home/$USER/.oh-my-zsh"
-
-# para mantener lo menor posible de oh my zsh, con el plan de quitarlo eventualmente
-[ -d "~/.config/zsh/ohmyzsh" ] && source ~/.config/zsh/ohmyzsh
-# sigue teniendo cosas cheveres que no se como copiar >:v
 
 stty -ixon
 
@@ -60,9 +51,9 @@ autoload -U colors && colors
 # visual
 if [[ $DISPLAY ]]; then
 
-	# silenciar los sonidos de muerte del sistema
-	xset b off
-	xset b 0 0 0
+    # silenciar los sonidos de muerte del sistema
+    xset b off
+    xset b 0 0 0
 
     # If not running interactively, do not do anything
     [[ $- != *i* ]] && return
@@ -72,29 +63,29 @@ if [[ $DISPLAY ]]; then
     # [[ -z "$TMUX" ]] && exec tmux new -A -s Init
 
 else
-	# silenciar los sonidos de muerte de la tty
-	setterm -blength 0
+    # silenciar los sonidos de muerte de la tty
+    setterm -blength 0
 
     # colores sacados del fondo de pantalla
     # wal -Rsq &
 
-	# echo -en "\e]P0232323" #black
-	# echo -en "\e]P82B2B2B" #darkgrey
-	# echo -en "\e]P1D75F5F" #darkred
-	# echo -en "\e]P9E33636" #red
-	# echo -en "\e]P287AF5F" #darkgreen
-	# echo -en "\e]PA98E34D" #green
-	# echo -en "\e]P3D7AF87" #brown
-	# echo -en "\e]PBFFD75F" #yellow
-	# echo -en "\e]P48787AF" #darkblue
-	# echo -en "\e]PC7373C9" #blue
-	# echo -en "\e]P5BD53A5" #darkmagenta
-	# echo -en "\e]PDD633B2" #magenta
-	# echo -en "\e]P65FAFAF" #darkcyan
-	# echo -en "\e]PE44C9C9" #cyan
-	# echo -en "\e]P7E5E5E5" #lightgrey
-	# echo -en "\e]PFFFFFFF" #white
-	# clear     #for background artifacting
+    # echo -en "\e]P0232323" #black
+    # echo -en "\e]P82B2B2B" #darkgrey
+    # echo -en "\e]P1D75F5F" #darkred
+    # echo -en "\e]P9E33636" #red
+    # echo -en "\e]P287AF5F" #darkgreen
+    # echo -en "\e]PA98E34D" #green
+    # echo -en "\e]P3D7AF87" #brown
+    # echo -en "\e]PBFFD75F" #yellow
+    # echo -en "\e]P48787AF" #darkblue
+    # echo -en "\e]PC7373C9" #blue
+    # echo -en "\e]P5BD53A5" #darkmagenta
+    # echo -en "\e]PDD633B2" #magenta
+    # echo -en "\e]P65FAFAF" #darkcyan
+    # echo -en "\e]PE44C9C9" #cyan
+    # echo -en "\e]P7E5E5E5" #lightgrey
+    # echo -en "\e]PFFFFFFF" #white
+    # clear     #for background artifacting
 fi
 
 
@@ -125,16 +116,16 @@ fi
 
 # recargar el shell
 src() {
-	local cache="$ZSH_CACHE_DIR"
-	autoload -U compinit zrecompile
-	compinit -i -d "$cache/zcomp-$HOST"
+    local cache="$ZSH_CACHE_DIR"
+    autoload -U compinit zrecompile
+    compinit -i -d "$cache/zcomp-$HOST"
 
-	for f in ~/.zshrc "$cache/zcomp-$HOST"; do
-		zrecompile -p $f && command rm -f $f.zwc.old
-	done
+    for f in ~/.zshrc "$cache/zcomp-$HOST"; do
+        zrecompile -p $f && command rm -f $f.zwc.old
+    done
 
-	# Use $SHELL if available; remove leading dash if login shell
-	[[ -n "$SHELL" ]] && exec ${SHELL#-} || exec zsh
+    # Use $SHELL if available; remove leading dash if login shell
+    [[ -n "$SHELL" ]] && exec ${SHELL#-} || exec zsh
 }
 
 ########
@@ -164,9 +155,6 @@ bindkey '^e' edit-command-line
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # alias
 source ~/.config/aliasrc
 
@@ -175,7 +163,7 @@ source ~/.config/aliasrc
 ###########
 
 # vi-mode
- # perform parameter expansion/command substitution in prompt
+# perform parameter expansion/command substitution in prompt
 bindkey -v
 export KEYTIMEOUT=1
 
@@ -186,13 +174,13 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
 bindkey -M vicmd '^[[A' history-beginning-search-backward-end \
-                 '^[OA' history-beginning-search-backward-end \
-                 '^[[B' history-beginning-search-forward-end  \
-                 '^[OB' history-beginning-search-forward-end
+        '^[OA' history-beginning-search-backward-end \
+        '^[[B' history-beginning-search-forward-end  \
+        '^[OB' history-beginning-search-forward-end
 bindkey -M viins '^[[A' history-beginning-search-backward-end \
-                 '^[OA' history-beginning-search-backward-end \
-                 '^[[B' history-beginning-search-forward-end  \
-                 '^[OB' history-beginning-search-forward-end
+        '^[OA' history-beginning-search-backward-end \
+        '^[[B' history-beginning-search-forward-end  \
+        '^[OB' history-beginning-search-forward-end
 
 bindkey -a '^[[3~' delete-char
 bindkey '^[[3~' delete-char
