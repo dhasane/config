@@ -26,7 +26,7 @@
 # _correct
 zstyle ':completion:*' completer _expand _complete _ignored 
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=** r:|=**'
-zstyle :compinstall filename '/home/dhas/.zshrc'
+zstyle :compinstall filename '/home/$USER/.zshrc'
 
 autoload -Uz compinit
 compinit
