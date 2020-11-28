@@ -399,7 +399,10 @@ bindsym $mod+BackSpace move scratchpad
 bindsym $mod+bar [instance="telegram-desktop"] scratchpad show
 # bindsym $mod+less [con_mark="stfloat"] scratchpad show
 
+bindsym $mod+m exec "emacsclient -c -a emacs --alternate-editor=''"
+bindsym $mod+greater [instance="emacs"] scratchpad show
+
 # poner una condicion para esto
-bindsym $mod+less [class="Alacritty"] scratchpad show
+bindsym $mod+less [class="Alacritty"] scratchpad show 
 # bindsym $mod+less [class="St"] scratchpad show
 # bindsym $mod+semicolon [class="St"] scratchpad show

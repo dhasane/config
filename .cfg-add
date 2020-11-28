@@ -21,7 +21,7 @@
 .profile
 .xprofile
 .zprofile
-.xmonad
+.xmonad/xmonad.hs
 .xmobar
 .xmobarrc
 .tmux.conf
