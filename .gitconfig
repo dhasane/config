@@ -26,3 +26,5 @@
 [filesystem "N/A|13.0.1|/dev/sda8"]
 	timestampResolution = 16000 nanoseconds
 	minRacyThreshold = 3613 microseconds
+[pull]
+	rebase = false

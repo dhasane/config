@@ -20,7 +20,7 @@ source ~/.xprofile
 # iniciar el wm
 
 #exec dwm
-#exec i3
+exec i3
 # exec xmonad
 # exec sway
 # exec startxfce4

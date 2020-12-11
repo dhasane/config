@@ -22,7 +22,7 @@
 .xprofile
 .zprofile
 .xmonad/xmonad.hs
-.xmobar
+.xmobarrc
 .xmobarrc
 .tmux.conf
 .xinitrc
