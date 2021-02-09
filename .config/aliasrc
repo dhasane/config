@@ -34,12 +34,16 @@ alias config-add='cd ~ ; config add $( cat ~/.cfg-add ); cd -; config status'
 
 alias arch-wiki='cd /usr/share/doc/arch-wiki/'
 
+exists() {
+    (type "$1" > /dev/null)
+}
+
 upd_pacman()
 {
     sudo pacman -Syu
     printf "\n\n Terminada actualización pacman \n\n\n"
 
-    [ "$(command -v yay)" != "" ] && yay -Syu &&
+    exists yay && yay -Syu &&
         printf "\n\n Terminada actualización aur \n\n"
 
     purgetheorphans
@@ -56,13 +60,17 @@ upd_apt()
 
 upd()
 {
-    if [ "$(command -v pacman)" != "" ]; then
+    if exists pacman ; then
         echo "actualizando Arch"
         upd_pacman
-    elif [ "$(command -v apt)" != "" ]; then
+    elif exists apt ; then
         echo "actualizando Debian"
         upd_apt
     fi
+
+    exists rustup && rustup update
+    exists gem && sudo gem update
+    exists npm && sudo npm update
 }
 
 # colores

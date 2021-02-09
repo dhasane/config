@@ -19,8 +19,8 @@ if_exists_export()
     done
 }
 
-if_exists_export TERMINAL alacritty st
-if_exists_export TERM alacritty st
+if_exists_export TERMINAL kitty alacritty st
+if_exists_export TERM kitty alacritty st
 if_exists_export EDITOR emacsclient nvim vim vi
 if_exists_export BROWSER firefox
 if_exists_export FILE thunar pcmanfm

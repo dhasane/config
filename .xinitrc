@@ -14,6 +14,7 @@
 
 # wallpaper
 # feh ~/.fehbg &
+~/scripts/home_screen.sh
 ~/scripts/wall.rb
 
 source ~/.xprofile

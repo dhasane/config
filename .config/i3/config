@@ -60,8 +60,8 @@ floating_modifier $mod
 # start a terminal
 # bindsym $mod+Return exec $TERMINAL
 # bindsym $mod+c exec $TERMINAL
-bindsym $mod+Return exec "alacritty"
-bindsym $mod+c exec "alacritty"
+bindsym $mod+Return exec "kitty"
+bindsym $mod+c exec "kitty"
 # bindsym $mod+Return exec "st"
 # bindsym $mod+c exec "st"
 # por alguna razon esto dejo de funcionar
@@ -332,6 +332,8 @@ bar {
     }
 }
 
+# exec_always --no-startup-id ~/.config/polybar/launch.sh &
+
 #################################
 # botones
 #################################
@@ -387,10 +389,10 @@ exec --no-startup-id  "sleep 2; i3-msg '[instance=telegram-desktop] move scratch
 # podria ser interesante crearle su propia sesion para tmux
 # exec "st -e tmux new -A -s float"
 # exec --no-startup-id "echo $TERMINAL > ~/esto-es-una-prueba"
-exec --no-startup-id "$TERMINAL -e tmux new -A -s float ; sleep 0,2 ; i3-msg '[class=Alacritty] move scratchpad'" 
+exec --no-startup-id "$TERMINAL -e tmux new -A -s float && sleep 0,5 && i3-msg '[class=kitty] move scratchpad'" 
 # exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] mark stfloat, move scratchpad'"
 # exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] move scratchpad'"
-# exec --no-startup-id  "sleep 0,2; i3-msg '[class=Alacritty] move scratchpad'"
+# exec --no-startup-id  "sleep 0,2; i3-msg '[class=kitty] move scratchpad'"
 
 
 # scratchpad
@@ -403,6 +405,6 @@ bindsym $mod+m exec "emacsclient -c -a emacs --alternate-editor=''"
 bindsym $mod+greater [instance="emacs"] scratchpad show
 
 # poner una condicion para esto
-bindsym $mod+less [class="Alacritty"] scratchpad show 
+bindsym $mod+less [class="kitty"] scratchpad show 
 # bindsym $mod+less [class="St"] scratchpad show
 # bindsym $mod+semicolon [class="St"] scratchpad show

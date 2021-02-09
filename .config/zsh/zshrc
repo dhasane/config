@@ -37,7 +37,6 @@ HISTSIZE=1000
 SAVEHIST=10000
 setopt autocd extendedglob nomatch notify
 unsetopt beep
-# bindkey -e
 
 # poner ctrl en caps
 # setxkbmap -option 'caps:ctrl_modifier' &
@@ -165,6 +164,7 @@ source ~/.config/aliasrc
 # vi-mode
 # perform parameter expansion/command substitution in prompt
 bindkey -v
+# bindkey -e
 export KEYTIMEOUT=1
 
 # buscar en historia a base de lo que ya se ha escrito
