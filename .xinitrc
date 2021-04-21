@@ -1,6 +1,9 @@
 #!/bin/sh
 
-[[ -f "$HOME/.profile" ]] && . ~/.profile
+# organizacion pantalla
+~/scripts/home_screen.sh
+# wallpaper
+# ~/scripts/wall.rb
 
 # idioma del teclado
 # setxkbmap -layout la-latin1 &
@@ -13,15 +16,17 @@
 # dunst &
 
 # wallpaper
-# feh ~/.fehbg &
-~/scripts/home_screen.sh
-~/scripts/wall.rb
+~/.fehbg &
 
-source ~/.xprofile
+[[ -f "$HOME/.profile" ]] && . ~/.profile
+[[ -f "$HOME/.xprofile" ]] && . ~/.xprofile
+
 # iniciar el wm
 
-#exec dwm
+# exec notion
 exec i3
+# exec stumpwm
+# exec dwm
 # exec xmonad
 # exec sway
 # exec startxfce4

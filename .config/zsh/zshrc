@@ -63,7 +63,7 @@ if [[ $DISPLAY ]]; then
 
 else
     # silenciar los sonidos de muerte de la tty
-    setterm -blength 0
+    # setterm -blength 0
 
     # colores sacados del fondo de pantalla
     # wal -Rsq &
@@ -138,6 +138,9 @@ bindkey -s '^[[15~' 'sudo !!^M'
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+
+# cambiar entre esp e ing
+# setxkbmap -option grp:alt_shift_toggle us,es
 
 # User configuration
 

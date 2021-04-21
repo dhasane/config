@@ -344,7 +344,7 @@ bindsym XF86MonBrightnessDown exec xbacklight - 5
 # bindsym XF86MonBrightnessUp exec acpilight + 5
 # bindsym XF86MonBrightnessDown exec acpilight - 5
 
-bindsym XF86Sleep exec "systemctl suspend"
+bindsym XF86Sleep exec "systemctl suspend ; xlock -mode hop"
 
 # screenshots
 bindsym Print exec "scrot -e 'mv $f ~/Screenshots'; notify-send 'screenshot taken'"
@@ -372,8 +372,9 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueberry-tray
 
 # lockscreen
-bindsym $mod+0 exec betterlockscreen -l
-exec --no-startup-id xautolock -time 25 -locker "betterlockscreen -l"
+# bindsym $mod+0 exec betterlockscreen -l
+bindsym $mod+0 exec xlock -mode hop
+exec --no-startup-id xautolock -time 25 -locker "xlock -mode hop"
 exec --no-startup-id xss-lock
 
 # notification daemon
@@ -382,14 +383,15 @@ exec --no-startup-id dunst
 # historial del clipboard
 # exec --no-startup-id CM_LAUNCHER=rofi
 
-exec "telegram-desktop "
+exec "telegram-desktop"
 exec --no-startup-id  "sleep 2; i3-msg '[instance=telegram-desktop] move scratchpad'"
 
 # top-down terminal
 # podria ser interesante crearle su propia sesion para tmux
 # exec "st -e tmux new -A -s float"
 # exec --no-startup-id "echo $TERMINAL > ~/esto-es-una-prueba"
-exec --no-startup-id "$TERMINAL -e tmux new -A -s float && sleep 0,5 && i3-msg '[class=kitty] move scratchpad'" 
+exec "$TERMINAL -e tmux new -A -s float" 
+exec --no-startup-id "sleep 2 && i3-msg '[class=kitty] move scratchpad'" 
 # exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] mark stfloat, move scratchpad'"
 # exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] move scratchpad'"
 # exec --no-startup-id  "sleep 0,2; i3-msg '[class=kitty] move scratchpad'"
@@ -401,7 +403,8 @@ bindsym $mod+BackSpace move scratchpad
 bindsym $mod+bar [instance="telegram-desktop"] scratchpad show
 # bindsym $mod+less [con_mark="stfloat"] scratchpad show
 
-bindsym $mod+m exec "emacsclient -c -a emacs --alternate-editor=''"
+bindsym $mod+m exec "emacs"
+# bindsym $mod+m exec "emacsclient -c -a emacs --alternate-editor=''"
 bindsym $mod+greater [instance="emacs"] scratchpad show
 
 # poner una condicion para esto

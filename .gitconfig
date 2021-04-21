@@ -1,6 +1,7 @@
 [user]
 	email = danihas@live.com
 	name = dhasane
+	signingkey = AF1C224D1A11F7EED2930A932DF842A7A51B4BA2
 [core]
 	editor = nvim
 	excludesfile = /home/daniel/.gitglobalignore
@@ -28,3 +29,10 @@
 	minRacyThreshold = 3613 microseconds
 [pull]
 	rebase = false
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+
+    gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}'| xargs -r git branch -D"

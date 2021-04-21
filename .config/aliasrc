@@ -17,6 +17,8 @@ alias llaves="gpg --list-secret-keys --keyid-format LONG"
 alias pantalla=arandr
 alias clima="curl wttr.in"
 
+alias remove-db-lock="rm /var/lib/pacman/db.lck"
+
 alias duck="mono ~/.steam/steam/steamapps/common/Duck\ Game/DuckGame.exe"
 
 # sistema
@@ -43,7 +45,7 @@ upd_pacman()
     sudo pacman -Syu
     printf "\n\n Terminada actualización pacman \n\n\n"
 
-    exists yay && yay -Syu &&
+    exists paru && paru -Syu &&
         printf "\n\n Terminada actualización aur \n\n"
 
     purgetheorphans
@@ -70,7 +72,7 @@ upd()
 
     exists rustup && rustup update
     exists gem && sudo gem update
-    exists npm && sudo npm update
+    # exists npm && sudo npm update
 }
 
 # colores
@@ -268,3 +270,18 @@ fn() {
   fi
 }
 
+emacs-build () {
+    ./autogen.sh
+    ./configure \
+        --enable-rust-debug \
+        --with-json \
+
+        # --with-webrender \ # experimental
+        --with-imagemagick \
+        --with-xwidgets \
+        --with-gconf \
+        --with-nativecomp
+
+    make -j 8
+    
+}
