@@ -141,7 +141,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent or child container
 # bindsym $mod+a focus parent
@@ -395,6 +395,9 @@ exec --no-startup-id "sleep 2 && i3-msg '[class=kitty] move scratchpad'"
 # exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] mark stfloat, move scratchpad'"
 # exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] move scratchpad'"
 # exec --no-startup-id  "sleep 0,2; i3-msg '[class=kitty] move scratchpad'"
+
+# cambiar lenguaje
+bindsym $mod+space exec sh ~/scripts/toggle-xkb.sh
 
 
 # scratchpad

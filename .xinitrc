@@ -24,6 +24,7 @@
 # iniciar el wm
 
 # exec notion
+# exec gnome-session
 exec i3
 # exec stumpwm
 # exec dwm
