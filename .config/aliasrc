@@ -28,7 +28,10 @@ alias peso='du -shx ./{*,.*} | sort -rh'
 alias cont='cd $(continuar)'
 
 # git
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+alias config='/usr/bin/git --git-dir=$HOME/config/.git/ --work-tree=$HOME/config'
+
 alias gis='git status'
 alias gco='git checkout'
 
