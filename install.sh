@@ -23,20 +23,32 @@ function move ()
         mv "$@"
 }
 
-hacer_link () {
-    if [[ -f "$1" || -d "$1" ]]
-    then
-        # file exists, do something
-        echo "ya existe, moviendo a backup"
-        move "$1" "./backup/$1"
-    fi
+# folder_or_dir() {
+#     echo $1
+#     [[ -d "$1" ]] || [[ -f "$1" ]]
+# }
 
-    if [[ ! -L "~/$1" ]]
+hacer_link () {
+
+    origen="$1"
+    destino="$HOME/$origen"
+
+    # echo "$origen $(dirname $destino) $destino"
+    if [[ ! -L "$destino" ]]
     then
         # echo "$1 -> ~/$1" 
-        ln -sv "$1" ~
+
+        if ([ -f "$destino" ] || [ -d "$destino" ])
+        then
+            # file exists, do something
+            echo "ya existe, moviendo a backup"
+            move "$origen" "./backup/$origen"
+        fi
+
+        ln -sv "$(pwd)/$origen" $(dirname "$destino")
     else
-        echo "ya ~/$1"
+        echo "ya existe $destino"
+        # rm "$destino"
     fi
 }
 
