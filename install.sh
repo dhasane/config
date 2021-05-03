@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 # conseguir los submodulos 
 # git submodule update --init --recursive
@@ -13,7 +14,7 @@ git pull --recurse-submodules
 
 # find . -exec echo "File is {} -> ~/{}" \;
 
-function move ()
+move ()
 {
     dir="$2"
     tmp="$2"; tmp="${tmp: -1}"
@@ -33,19 +34,21 @@ hacer_link () {
     origen="$1"
     destino="$HOME/$origen"
 
-    # echo "$origen $(dirname $destino) $destino"
-    if [[ ! -L "$destino" ]]
+    echo "$origen $(dirname $destino) $destino"
+
+    if [ ! -L "$destino" ]
     then
         # echo "$1 -> ~/$1" 
 
-        if ([ -f "$destino" ] || [ -d "$destino" ])
+        if [ -f "$destino" ] || [ -d "$destino" ]
         then
             # file exists, do something
             echo "ya existe, moviendo a backup"
-            move "$origen" "./backup/$origen"
+            # move "$origen" "./backup/$origen"
         fi
 
-        ln -sv "$(pwd)/$origen" $(dirname "$destino")
+        echo "link"
+        # ln -sv "$(pwd)/$origen" "$(dirname "$destino")"
     else
         echo "ya existe $destino"
         # rm "$destino"
@@ -62,15 +65,15 @@ exclude=(
 )
 
 
-copy=$(find -maxdepth 1 -printf '%f ' -path "." )
+copy=$(find . -maxdepth 1 -printf '%f ' -path "." )
 
-for del in ${exclude[@]}
+for del in "${exclude[@]}"
 do
     copy=("${copy[@]/$del}")
 done
 
 # home dot files
-for file in ${copy[@]}
+for file in "${copy[@]}"
 do 
     hacer_link "$file"
 done
@@ -81,7 +84,11 @@ echo
 
 
 for_each_dir () {
-    ls "$1" | while read file; do hacer_link "$1/$file" /; done
+    val=$(find "$1" -maxdepth 1)
+    for file in $val
+    do
+        hacer_link "$1/$file"
+    done
 }
 
 for_each_dir ".config"

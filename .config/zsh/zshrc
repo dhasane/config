@@ -127,21 +127,6 @@ src() {
     [[ -n "$SHELL" ]] && exec ${SHELL#-} || exec zsh
 }
 
-########
-# binds
-########
-
-# f5 para sudo !!
-# https://unix.stackexchange.com/questions/116562/key-bindings-table
-bindkey -s '^[[15~' 'sudo !!^M'
-
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-
-# cambiar entre esp e ing
-# setxkbmap -option grp:alt_shift_toggle us,es
-
 # User configuration
 
 # You may need to manually set your language environment
@@ -161,7 +146,7 @@ bindkey '^e' edit-command-line
 source ~/.config/aliasrc
 
 ###########
-# adiciones
+# Vim
 ###########
 
 # vi-mode
@@ -188,6 +173,26 @@ bindkey -M viins '^[[A' history-beginning-search-backward-end \
 bindkey -a '^[[3~' delete-char
 bindkey '^[[3~' delete-char
 bindkey "^?" backward-delete-char
+
+########
+# binds
+########
+
+# f5 para sudo !!
+# https://unix.stackexchange.com/questions/116562/key-bindings-table
+bindkey -s '^[[15~' 'sudo !!^M'
+
+# cambiar entre esp e ing
+# setxkbmap -option grp:alt_shift_toggle us,es
+
+
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey "^e" edit-command-line
+bindkey -M vicmd v edit-command-line
+
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 #######
 # theme
