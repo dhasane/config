@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # conseguir los submodulos 
 # git submodule update --init --recursive
@@ -6,24 +6,19 @@
 
 git pull --recurse-submodules
 
+# para imprimir
 TAB_SPACES='    '
 
-# ./{*,.*}
-# for f in {*,.*} 
-# do 
-#     echo "$f -> ~/$f"
-# done
-
-# find . -exec echo "File is {} -> ~/{}" \;
-
+# crea los directorios que sean necesarios y mueve el archivo a la
+# ubicacion dada
 move ()
 {
     dir="$2"
-    tmp="$2"; tmp="${tmp: -1}"
+    tmp="$2"
+
     [ "$tmp" != "/" ] && dir="$(dirname "$2")"
-    [ -a "$dir" ] ||
-        mkdir -p "$dir" &&
-        mv "$@"
+    [ -e "$dir" ] || mkdir -p "$dir"
+    mv "$1" "$(dirname "$2")"
 }
 
 link() {
@@ -44,7 +39,7 @@ hacer_link () {
         if [ -f "$destino" ] || [ -d "$destino" ]
         then
             echo "$TAB_SPACES ya existe, moviendo a backup"
-            move "$origen" "./backup/$origen"
+            move "$destino" "./backup$destino"
         fi
 
         echo "$TAB_SPACES haciendo link"
@@ -66,6 +61,10 @@ for_each_dir () {
         hacer_link "$from" "$to" "$file"
     done
 }
+
+echo
+echo "home:"
+echo
 
 for_each_dir "$(pwd)/home" "$HOME"
 
