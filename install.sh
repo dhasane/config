@@ -6,6 +6,8 @@
 
 git pull --recurse-submodules
 
+TAB_SPACES='    '
+
 # ./{*,.*}
 # for f in {*,.*} 
 # do 
@@ -24,72 +26,51 @@ move ()
         mv "$@"
 }
 
-# folder_or_dir() {
-#     echo $1
-#     [[ -d "$1" ]] || [[ -f "$1" ]]
-# }
+link() {
+    # echo "ln -sv $1 $2"
+    ln -sv "$1" "$2"
+}
 
 hacer_link () {
+    origen="$1/$3"
+    destino="$2/$3"
 
-    origen="$1"
-    destino="$HOME/$origen"
-
-    echo "$origen $(dirname $destino) $destino"
+    # echo "$origen $(dirname $destino) $destino"
+    echo "origen: $origen"
+    echo "destino: $destino"
 
     if [ ! -L "$destino" ]
     then
-        # echo "$1 -> ~/$1" 
-
         if [ -f "$destino" ] || [ -d "$destino" ]
         then
-            # file exists, do something
-            echo "ya existe, moviendo a backup"
-            # move "$origen" "./backup/$origen"
+            echo "$TAB_SPACES ya existe, moviendo a backup"
+            move "$origen" "./backup/$origen"
         fi
 
-        echo "link"
-        # ln -sv "$(pwd)/$origen" "$(dirname "$destino")"
+        echo "$TAB_SPACES haciendo link"
+        link "$origen" "$destino"
     else
-        echo "ya existe $destino"
-        # rm "$destino"
+        echo "$TAB_SPACES ya existe"
     fi
+    echo
 }
 
-exclude=(
-    .
-    .git
-    README.md
-    install.sh
-    .config
-    backup
-)
+for_each_dir () {
+    from="$1"
+    to="$2"
 
+    val=$(ls -Ab "$from")
+    echo "$from $to"
+    for file in $val
+    do
+        hacer_link "$from" "$to" "$file"
+    done
+}
 
-copy=$(find . -maxdepth 1 -printf '%f ' -path "." )
-
-for del in "${exclude[@]}"
-do
-    copy=("${copy[@]/$del}")
-done
-
-# home dot files
-for file in "${copy[@]}"
-do 
-    hacer_link "$file"
-done
+for_each_dir "$(pwd)/home" "$HOME"
 
 echo
 echo ".config:"
 echo
 
-
-for_each_dir () {
-    val=$(find "$1" -maxdepth 1)
-    for file in $val
-    do
-        hacer_link "$1/$file"
-    done
-}
-
-for_each_dir ".config"
-
+for_each_dir "$(pwd)/config" "$HOME/.config"
