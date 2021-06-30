@@ -26,6 +26,8 @@ link() {
     ln -sv "$1" "$2"
 }
 
+# importante pasar una ruta absoluta como primer parametro
+# debido a la forma en la que funciona ln
 hacer_link () {
     origen="$1/$3"
     destino="$2/$3"

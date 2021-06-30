@@ -40,17 +40,18 @@ alias config-add='cd ~ ; config add $( cat ~/.cfg-add ); cd -; config status'
 alias arch-wiki='cd /usr/share/doc/arch-wiki/'
 
 exists() {
-    (type "$1" > /dev/null)
+    (type "$1" > /dev/null 2>&1)
 }
 
 upd_pacman()
 {
     sudo pacman -Syu
-    printf "\n\n Terminada actualización pacman \n\n\n"
+    printf "\n\n Terminada actualización pacman \n\n"
 
     exists paru && paru -Syu &&
         printf "\n\n Terminada actualización aur \n\n"
 
+    printf "\n\n Limpiando paquetes \n\n"
     purgetheorphans
     printf "\n"
 }
@@ -59,17 +60,28 @@ upd_apt()
 {
     sudo apt update
     sudo apt upgrade --fix-missing
-    sudo apt dist-upgrade
+    # sudo apt dist-upgrade
+
+    printf "\n\n Terminada actualización apt \n\n"
+
+    exists snap && sudo snap refresh &&
+        printf "\n\n Terminada actualización snap \n\n"
+
+
+    printf "\n\n Limpiando paquetes \n\n"
     sudo apt autoremove
+    echo
 }
 
 upd()
 {
-    if exists pacman ; then
+    if exists pacman
+    then
         echo "actualizando Arch"
         upd_pacman
-    elif exists apt ; then
-        echo "actualizando Debian"
+    elif exists apt
+    then
+        echo "actualizando Apt"
         upd_apt
     fi
 
@@ -117,6 +129,30 @@ if_exists_alias()
 if_exists_alias ls exa
 if_exists_alias l '" " "exa" "-l"'
 
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
 # foreach()
 # {
 #     for i in ${@}
@@ -139,7 +175,6 @@ alias se='ls /usr/bin | grep'
 alias usb='cd /run/media/$USER'
 alias clear='clear ; [[ ! -z "$TMUX" ]] && tmux clear-history ' # limpiar la pantalla y el historial de tmux
 
-alias matar=pkill
 alias word='grep -rnw . -e '
 alias open='xdg-open' # abrir archivos con el programa predeterminado
 
@@ -189,37 +224,45 @@ alias dmusic='youtube-dl --extract-audio -i --audio-format mp3 ' # aqui va el li
 
 # construir con make
 alias mk=make
-alias db='
+
+upmk () {
+	cd ..
+	make $@
+	cd -
+}
+
+dbcmk() {
 	if [ ! -d build ]
-		then
-			echo "carpeta creada"
-			mkdir build
-		fi;
-	cd build;
+	then
+		echo "carpeta creada"
+		mkdir build
+	fi
+	cd build
 	cmake ..
-	'
+}
 
-alias rb='
+rbcmk ()
+{
 	if [ -d build ]
-		then
-			rm -rf build
-			echo "carpeta build eliminada"
-		else
-			echo "carpeta build inexistente"
-		fi;
-	'
+	then
+		rm -rf build
+		echo "carpeta build eliminada"
+	else
+		echo "carpeta build inexistente"
+	fi
+}
 
-alias dmk='
+dmk() {
 	if [ ! -d build ]
-		then
-			echo "carpeta creada"
-			mkdir build
-		fi;
-	cd build;
-	cmake ..;
-	make;
-	cd ..;
-	'
+	then
+		echo "carpeta creada"
+		mkdir build
+	fi
+	cd build
+	cmake ..
+	make
+	cd ..
+}
 
 # lenguajes
 alias py=python3
@@ -256,35 +299,34 @@ purgetheorphans() {
 # Find files with extension
 # Usage: fext <ext> [max_depth]
 fext() {
-  if [ -z "${2}" ]; then
-    find . -type f -name "*.${1}"
-  else
-    find . -maxdepth "${2}" -type f -name "*.${1}"
-  fi
+    if [ -z "${2}" ]; then
+        find . -type f -name "*.${1}"
+    else
+        find . -maxdepth "${2}" -type f -name "*.${1}"
+    fi
 }
 
 # Find file/directory by substring
 # Usage: fn <substring> [max_depth]
 fn() {
-  if [ -z "${2}" ]; then
-    find . -iname "*${1}*"
-  else
-    find . -maxdepth "${2}" -iname "*${1}*"
-  fi
+    if [ -z "${2}" ]; then
+        find . -iname "*${1}*"
+    else
+        find . -maxdepth "${2}" -iname "*${1}*"
+    fi
 }
 
-emacs-build () {
+emacs_build () {
     ./autogen.sh
     ./configure \
         --enable-rust-debug \
         --with-json \
-
-        # --with-webrender \ # experimental
         --with-imagemagick \
         --with-xwidgets \
         --with-gconf \
         --with-nativecomp
 
+        # --with-webrender \ # experimental
     make -j 8
     
 }

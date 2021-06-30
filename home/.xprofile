@@ -26,4 +26,4 @@ unclutter -idle 15 &
 
 # battery daemon
 # mostrar advertencia cuando la bateria este en 10%
-~/scripts/daemons/bin/bat_daemon /sys/class/power_supply/BAT*
+# ~/scripts/daemons/bin/bat_daemon /sys/class/power_supply/BAT*
