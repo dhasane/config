@@ -75,7 +75,7 @@ esac
 # Alias definitions.
 # if [ -f ~/.config/aliasr ]; then
 # fi
-source ~/.config/aliasrc
+. ~/.config/aliasrc
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -87,5 +87,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+src() {
+    . $HOME/.bashrc
+}
 
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh

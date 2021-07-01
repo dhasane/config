@@ -68,7 +68,7 @@ upd_apt()
         printf "\n\n Terminada actualización snap \n\n"
 
 
-    printf "\n\n Limpiando paquetes \n\n"
+    printf "\n Limpiando paquetes \n\n"
     sudo apt autoremove
     echo
 }
