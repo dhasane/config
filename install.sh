@@ -4,10 +4,7 @@
 # git submodule update --init --recursive
 # git submodule update --recursive --remote
 
-git pull --recurse-submodules
-
-# para imprimir
-TAB_SPACES='    '
+# git pull --recurse-submodules
 
 # crea los directorios que sean necesarios y mueve el archivo a la
 # ubicacion dada
@@ -32,46 +29,33 @@ hacer_link () {
     origen="$1/$3"
     destino="$2/$3"
 
-    # echo "$origen $(dirname $destino) $destino"
-    echo "origen: $origen"
-    echo "destino: $destino"
-
     if [ ! -L "$destino" ]
     then
+        printf "origen: %s \t destino: %s\n" "$origen" "$destino"
         if [ -f "$destino" ] || [ -d "$destino" ]
         then
-            echo "$TAB_SPACES ya existe, moviendo a backup"
+            printf "ya existe, moviendo a backup | "
             move "$destino" "./backup$destino"
         fi
-
-        echo "$TAB_SPACES haciendo link"
+        printf "haciendo link \t"
         link "$origen" "$destino"
-    else
-        echo "$TAB_SPACES ya existe"
+        printf "\n"
     fi
-    echo
 }
 
+# para todos los elementos dentro de una carpeta dada por el primer parametro, 
+# hacer link a la carpeta en el segundo parametro 
 for_each_dir () {
     from="$1"
     to="$2"
 
     val=$(ls -Ab "$from")
-    echo "$from $to"
+    echo "$from ===> $to:"
     for file in $val
     do
         hacer_link "$from" "$to" "$file"
     done
 }
 
-echo
-echo "home:"
-echo
-
 for_each_dir "$(pwd)/home" "$HOME"
-
-echo
-echo ".config:"
-echo
-
 for_each_dir "$(pwd)/config" "$HOME/.config"

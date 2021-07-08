@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/env sh
 # ~/.profile: executed by the command interpreter for login shells.
 
 # el primer argumento es la variable
@@ -38,6 +38,12 @@ add_to_path()
         [ -d "$1" ] && PATH="$1:$PATH"
 }
 
+source_if_exists()
+{
+    [ -e "$1" ] && . "$1"
+}
+
+
 add_to_path "$HOME"/scripts
 add_to_path "$HOME"/bin
 add_to_path "$HOME"/.local/bin
@@ -49,4 +55,4 @@ add_to_path "$HOME"/dragonruby/dragonruby
 
 # $HOME/scripts/ssh-agent-autostart.sh
 
-if [ -e "$HOME"/.nix-profile/etc/profile.d/nix.sh ]; then . "$HOME"/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+source_if_exists "$HOME"/.nix-profile/etc/profile.d/nix.sh  # added by Nix installer
