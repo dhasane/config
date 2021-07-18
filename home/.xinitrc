@@ -13,7 +13,19 @@
 # localectl set-x11-keymap es grp:lctrl_lshift_toggle &
 
 # notifications
-# dunst &
+dunst &
+
+# tray
+nm-applet &
+blueberry-tray &
+
+# lockscreen
+xautolock -time 25 -locker "xlock -mode hop" &
+xss-lock &
+
+# programas
+thunderbird &
+telegram-desktop &
 
 # wallpaper
 ~/.fehbg &
@@ -23,9 +35,11 @@
 
 # iniciar el wm
 
+exec /home/daniel/dev/penrose_config/target/release/penrose &> ~/.penrose.log
+
 # exec notion
 # exec gnome-session
-exec i3
+# exec i3
 # exec stumpwm
 # exec dwm
 # exec xmonad

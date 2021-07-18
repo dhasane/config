@@ -9,7 +9,7 @@
 	timestampResolution = 1002 milliseconds
 	minRacyThreshold = 0 nanoseconds
 [diff]
-	tool = vimdiff
+	tool = nvim -d
 [difftool]
 	prompt = false
 [mergetool "nvim"]

@@ -150,8 +150,8 @@ source ~/.config/aliasrc
 
 # vi-mode
 # perform parameter expansion/command substitution in prompt
-# bindkey -v
-bindkey -e
+bindkey -v
+# bindkey -e
 export KEYTIMEOUT=1
 
 # buscar en historia a base de lo que ya se ha escrito

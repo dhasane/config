@@ -11,7 +11,7 @@ export SSH_KEY_PATH="$HOME/.private_keys/id_rsa"
 
 # alias
 
-alias ssh='eval `keychain --eval --agents ssh $SSH_KEY_PATH`; ssh'
+# alias ssh='eval `keychain --eval --agents ssh $SSH_KEY_PATH`; ssh'
 alias pila="upower -d"
 alias llaves="gpg --list-secret-keys --keyid-format LONG"
 alias pantalla=arandr
@@ -86,7 +86,7 @@ upd()
     fi
 
     exists rustup && rustup update
-    exists gem && sudo gem update
+    exists gem && gem update
     # exists npm && sudo npm update
 }
 
@@ -201,8 +201,8 @@ open_vim()
 }
 
 # alias e='TERM=xterm-256color emacs'
-alias e='TERM=xterm-256color emacsclient -nw'
-alias em='TERM=xterm-256color emacs -nw'
+alias ec='TERM=xterm-256color emacsclient -nw'
+alias e='TERM=xterm-256color emacs -nw'
 alias v=' open_vim'
 alias vim=' open_vim'
 alias sv='sudo nvim'
@@ -314,19 +314,4 @@ fn() {
     else
         find . -maxdepth "${2}" -iname "*${1}*"
     fi
-}
-
-emacs_build () {
-    ./autogen.sh
-    ./configure \
-        --enable-rust-debug \
-        --with-json \
-        --with-imagemagick \
-        --with-xwidgets \
-        --with-gconf \
-        --with-nativecomp
-
-        # --with-webrender \ # experimental
-    make -j 8
-    
 }

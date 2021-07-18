@@ -367,18 +367,11 @@ bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- &&pkill -
 
 #exec --no-startup-id ~/.config/conky/conky_start.sh
 
-# status bar
-exec --no-startup-id nm-applet
-exec --no-startup-id blueberry-tray
-
 # lockscreen
 # bindsym $mod+0 exec betterlockscreen -l
 bindsym $mod+0 exec xlock -mode hop
 exec --no-startup-id xautolock -time 25 -locker "xlock -mode hop"
 exec --no-startup-id xss-lock
-
-# notification daemon
-exec --no-startup-id dunst
 
 # historial del clipboard
 # exec --no-startup-id CM_LAUNCHER=rofi
@@ -398,7 +391,6 @@ exec --no-startup-id "sleep 2 && i3-msg '[class=kitty] move scratchpad'"
 
 # cambiar lenguaje
 bindsym $mod+space exec sh ~/scripts/toggle-xkb.sh
-
 
 # scratchpad
 # bindsym $mod+Tab scratchpad show

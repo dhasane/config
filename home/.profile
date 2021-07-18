@@ -53,6 +53,4 @@ add_to_path "$HOME"/inst/flutter/bin
 add_to_path "$HOME"/.cargo/bin
 add_to_path "$HOME"/dragonruby/dragonruby
 
-# $HOME/scripts/ssh-agent-autostart.sh
-
-source_if_exists "$HOME"/.nix-profile/etc/profile.d/nix.sh  # added by Nix installer
+source_if_exists "$HOME"/.nix-profile/etc/profile.d/nix.sh
