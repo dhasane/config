@@ -97,13 +97,13 @@ alias diff='diff --color=auto'
 
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
-    LESS_TERMCAP_me=$'\e[0m' \
-    LESS_TERMCAP_se=$'\e[0m' \
-    LESS_TERMCAP_so=$'\e[01;44;33m' \
-    LESS_TERMCAP_ue=$'\e[0m' \
-    LESS_TERMCAP_us=$'\e[01;32m' \
-    command man "$@"
-}
+        LESS_TERMCAP_me=$'\e[0m' \
+        LESS_TERMCAP_se=$'\e[0m' \
+        LESS_TERMCAP_so=$'\e[01;44;33m' \
+        LESS_TERMCAP_ue=$'\e[0m' \
+        LESS_TERMCAP_us=$'\e[01;32m' \
+        command man "$@"
+    }
 
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
@@ -123,8 +123,8 @@ if_exists_alias()
         [ "$(command -v "$i")" != "" ] &&
             alias "$1"=" $i" &&
             break
-    done
-}
+        done
+    }
 
 if_exists_alias ls exa
 if_exists_alias l '" " "exa" "-l"'
@@ -201,8 +201,8 @@ open_vim()
 }
 
 # alias e='TERM=xterm-256color emacs'
-alias ec='TERM=xterm-256color emacsclient -nw'
-alias e='TERM=xterm-256color emacs -nw'
+alias e='TERM=xterm-256color emacsclient -nw'
+# alias e='TERM=xterm-256color emacs -nw'
 alias v=' open_vim'
 alias vim=' open_vim'
 alias sv='sudo nvim'
@@ -218,7 +218,11 @@ alias goto=". goto"
 alias whats='xdg-open https://web.whatsapp.com/'
 alias yt=youtube
 alias opgit="xdg-open https://github.com/dhasane"
-alias dmusic='youtube-dl --extract-audio -i --audio-format mp3 ' # aqui va el link  # descargar musica
+
+dmusic () {
+    # aqui va el link  # descargar musica
+    youtube-dl --extract-audio -i --audio-format mp3 "$1"
+}
 
 # lenguajes
 
@@ -226,42 +230,42 @@ alias dmusic='youtube-dl --extract-audio -i --audio-format mp3 ' # aqui va el li
 alias mk=make
 
 upmk () {
-	cd ..
-	make $@
-	cd -
+    cd ..
+    make $@
+    cd -
 }
 
 dbcmk() {
-	if [ ! -d build ]
-	then
-		echo "carpeta creada"
-		mkdir build
-	fi
-	cd build
-	cmake ..
+    if [ ! -d build ]
+    then
+        echo "carpeta creada"
+        mkdir build
+    fi
+    cd build
+    cmake ..
 }
 
 rbcmk ()
 {
-	if [ -d build ]
-	then
-		rm -rf build
-		echo "carpeta build eliminada"
-	else
-		echo "carpeta build inexistente"
-	fi
+    if [ -d build ]
+    then
+        rm -rf build
+        echo "carpeta build eliminada"
+    else
+        echo "carpeta build inexistente"
+    fi
 }
 
 dmk() {
-	if [ ! -d build ]
-	then
-		echo "carpeta creada"
-		mkdir build
-	fi
-	cd build
-	cmake ..
-	make
-	cd ..
+    if [ ! -d build ]
+    then
+        echo "carpeta creada"
+        mkdir build
+    fi
+    cd build
+    cmake ..
+    make
+    cd ..
 }
 
 # lenguajes
@@ -276,10 +280,10 @@ alias jav=javac
 ###########
 
 # subir directorios como : .. # , donde # es el numero de directorios a subir
-..() {
+go_up() {
     cd $(for ((c=0; c<${1:-1}; ++c)); do echo -n ../; done) || exit
 }
-alias ..=" .."
+alias ..=" go_up"
 
 # eliminar paquetes huerfanos
 # alias purgetheorphans='sudo pacman -Rns $(pacman -Qtdq)'

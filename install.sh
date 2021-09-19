@@ -29,6 +29,26 @@ hacer_link () {
     origen="$1/$3"
     destino="$2/$3"
 
+    # TODO: verificar en el else si el link esta roto o si apunta a un
+    # lugar distinto, de forma que se pueda quitar el otro link y
+    # poner este
+
+    # printf "origen: %s \t destino: %s\n" "$origen" "$destino"
+
+    # [ -L "$destino" ] && [ ! -e "$destino" ] && echo "yes $destino"
+
+    # [[ -L "$destino" && ! -e "$destino" ]] && echo "yes $destino"
+
+    # if [ "$(readlink "$destino")" != "$origen" ]
+    # then
+    #     echo "distinto"
+    # fi
+
+    # if [ -L "$destino" ] && [ ! -e "$destino " ]
+    # then
+    #     echo "yes  === $destino "
+    # fi
+
     if [ ! -L "$destino" ]
     then
         printf "origen: %s \t destino: %s\n" "$origen" "$destino"
