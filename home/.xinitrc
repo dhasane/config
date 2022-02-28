@@ -27,13 +27,13 @@ nm-applet &
 blueberry-tray &
 
 # lockscreen
-xautolock -time 25 -locker "xlock -mode hop" &
-xss-lock &
+# xautolock -time 25 -locker "xlock -mode hop" &
+# xss-lock &
 
 # programas
 # thunderbird &
 # telegram-desktop &
-~/scripts/daemons/bin/bat_daemon
+# ~/scripts/daemons/bin/bat_daemon
 
 # wallpaper
 ~/.fehbg &
@@ -49,11 +49,14 @@ exec_wn() {
 
 # exec /home/daniel/dev/penrose_config/target/release/penrose_config &> ~/.penrose.log
 
-# exec notion
-# exec gnome-session
+# export DESKTOP_SESSION=plasma
+
 # exec i3
-# exec stumpwm
-# exec dwm
 exec xmonad > ~/.xmonad.log
-# exec sway
 # exec startxfce4
+# exec startplasma-x11 > .plasma.log
+# exec gnome-session
+# exec stumpwm
+# exec notion
+# exec dwm
+# exec sway

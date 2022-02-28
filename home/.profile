@@ -48,7 +48,7 @@ add_to_path "$HOME"/scripts
 add_to_path "$HOME"/bin
 add_to_path "$HOME"/.local/bin
 #  # lenguajes
-add_to_path "$HOME"/.gem/ruby/2.7.0/bin
+add_to_path "$HOME"/.gem/ruby/3.0.0/bin
 add_to_path "$HOME"/inst/flutter/bin
 add_to_path "$HOME"/.cargo/bin
 add_to_path "$HOME"/dragonruby/dragonruby

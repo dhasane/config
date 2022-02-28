@@ -1,9 +1,9 @@
 configuration {
     modi:           "window,drun,ssh,combi";
-    theme:          "saidbar";
     font:           "hack 10";
     combi-modi:     "window,drun,ssh";
     show-icons:     true;
     sidebar-mode:   true;
     display-drun:   "run";
 }
+@theme "saidbar"
