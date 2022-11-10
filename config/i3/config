@@ -126,16 +126,16 @@ bindsym $mod+Shift+x move right
 # split orientation
 # bindsym $mod+v split toggle
 # bindsym $mod+c split horizontal
-bindsym $mod+t       split h
-bindsym $mod+Shift+t split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+w layout toggle tabbed stacking
-# split
-bindsym $mod+e layout toggle split
+# bindsym $mod+t       split h
+# bindsym $mod+Shift+t split v
+#
+# # enter fullscreen mode for the focused container
+# bindsym $mod+f fullscreen toggle
+#
+# # change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+w layout toggle tabbed stacking
+# # split
+# bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -145,8 +145,8 @@ bindsym $mod+Shift+space floating toggle
 
 # focus the parent or child container
 # bindsym $mod+a focus parent
-bindsym $mod+a focus parent
-bindsym $mod+Shift+a focus child
+# bindsym $mod+a focus parent
+# bindsym $mod+Shift+a focus child
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -231,6 +231,33 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+set $window_movements (f) fullscreen toggle            , \
+        (l) layout toggle tabbed stacking,  \
+        (s) layout toggle split          ,  \
+        (h) split h                      ,  \
+        (v) split v                      ,  \
+        (p) focus parent
+bindsym Shift+p focus child
+mode "window_movements" {
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+
+    bindsym f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+    bindsym l layout toggle tabbed stacking
+# split
+    bindsym s layout toggle split
+
+    bindsym h split h
+    bindsym v split v
+
+
+    bindsym p focus parent
+    bindsym Shift+p focus child
+}
+
+bindsym $mod+w mode "window_movements"
 
 # set $music_mode (k)play/pause, (l)next, (j)previous, (r)andom, (shift+r)repeat
 # # trabajo en proceso
@@ -266,7 +293,7 @@ mode "$web_mode" {
 	bindsym Escape mode "default"
 }
 
-bindsym $mod+p mode "$web_mode"
+# bindsym $mod+p mode "$web_mode"
 
 ################
 # colores

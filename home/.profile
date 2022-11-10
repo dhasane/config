@@ -54,3 +54,7 @@ add_to_path "$HOME"/.cargo/bin
 add_to_path "$HOME"/dragonruby/dragonruby
 
 source_if_exists "$HOME"/.nix-profile/etc/profile.d/nix.sh
+
+# >>> coursier install directory >>>
+export PATH="$PATH:/home/daniel/.local/share/coursier/bin"
+# <<< coursier install directory <<<

@@ -3,7 +3,7 @@
 # exports
 
 # ssh
-export SSH_KEY_PATH="$HOME/.private_keys/id_rsa"
+# export SSH_KEY_PATH="$HOME/.private_keys/id_rsa"
 
 # eval $(keychain --eval --quiet id_ed25519 id_rsa ~/.keys/)
 # eval $(keychain --eval --quiet ~/.ssh/id_rsa )
@@ -73,6 +73,13 @@ upd_apt()
     echo
 }
 
+upd_nixos()
+{
+    # sudo nix-channel --update
+    sudo nixos-rebuild switch
+    # sudo nix-collect-garbage -d
+}
+
 upd()
 {
     if exists pacman
@@ -83,6 +90,10 @@ upd()
     then
         echo "actualizando Apt"
         upd_apt
+    elif exists nixos-rebuild
+    then
+        echo actualizando Nixos
+        upd_nixos
     fi
 
     exists rustup && rustup update

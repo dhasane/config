@@ -30,6 +30,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = wuncon siji:pixelsize=10;1
 
 modules-left = i3 wlan windowtitle
+; modules-left = xmonad wlan windowtitle
 modules-center = date
 modules-right = filesystemroot filesystem eth memory cpu battery
 

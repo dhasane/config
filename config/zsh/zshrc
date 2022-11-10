@@ -129,7 +129,7 @@ src() {
 }
 
 vsrc () {
-    nvim ~/.zshrc
+    nvim ~/.config/zsh/zshrc
     src
 }
 
