@@ -237,7 +237,7 @@ set $window_movements (f) fullscreen toggle            , \
         (h) split h                      ,  \
         (v) split v                      ,  \
         (p) focus parent
-bindsym Shift+p focus child
+bindsym $mod+Shift+p focus child
 mode "window_movements" {
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
