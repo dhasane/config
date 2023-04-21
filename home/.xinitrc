@@ -19,24 +19,25 @@ xcape -e 'Caps_Lock=Escape' &
 # cambiar entre esp e ing
 # setxkbmap -option grp:alt_shift_toggle "us,es"
 
-# notifications
-dunst &
+wm () {
+    # notifications
+    dunst &
+    # tray
+    nm-applet &
+    blueberry-tray &
 
-# tray
-nm-applet &
-blueberry-tray &
+    # lockscreen
+    # xautolock -time 25 -locker "xlock -mode hop" &
+    # xss-lock &
 
-# lockscreen
-# xautolock -time 25 -locker "xlock -mode hop" &
-# xss-lock &
+    # programas
+    # thunderbird &
+    # telegram-desktop &
+    # ~/scripts/daemons/bin/bat_daemon
 
-# programas
-# thunderbird &
-# telegram-desktop &
-# ~/scripts/daemons/bin/bat_daemon
-
-# wallpaper
-~/.fehbg &
+    # wallpaper
+    ~/.fehbg &
+}
 
 [[ -f "$HOME/.profile" ]] && . ~/.profile
 [[ -f "$HOME/.xprofile" ]] && . ~/.xprofile
@@ -52,10 +53,11 @@ exec_wn() {
 # export DESKTOP_SESSION=plasma
 
 # exec i3
-exec xmonad > ~/.xmonad.log
+# exec xmonad > ~/.xmonad.log
 # exec startxfce4
 # exec startplasma-x11 > .plasma.log
-# exec gnome-session
+
+exec gnome-session
 # exec stumpwm
 # exec notion
 # exec dwm

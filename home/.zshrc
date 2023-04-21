@@ -1,3 +1,5 @@
 # End of lines configured by zsh-newuser-install
+
+. ~/.config/aliasrc
 . ~/.config/zsh/zshrc
-if [ -e "/home/$USER/.nix-profile/etc/profile.d/nix.sh" ]; then . "/home/$USER/.nix-profile/etc/profile.d/nix.sh"; fi 
+. ~/.config/zsh/themes/tty.zsh

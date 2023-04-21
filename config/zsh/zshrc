@@ -148,18 +148,15 @@ vsrc () {
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# alias
-source ~/.config/aliasrc
-
 ###########
-# Vim
+# Keybinds
 ###########
 
 # vi-mode
 # perform parameter expansion/command substitution in prompt
-bindkey -v
-# bindkey -e
-export KEYTIMEOUT=1
+# bindkey -v
+bindkey -e
+# export KEYTIMEOUT=1
 
 # buscar en historia a base de lo que ya se ha escrito
 autoload -Uz history-search-end
@@ -167,11 +164,17 @@ autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
-bindkey -M vicmd '^[[A' history-beginning-search-backward-end \
-        '^[OA' history-beginning-search-backward-end \
-        '^[[B' history-beginning-search-forward-end  \
-        '^[OB' history-beginning-search-forward-end
-bindkey -M viins '^[[A' history-beginning-search-backward-end \
+# bindkey -M vicmd '^[[A' history-beginning-search-backward-end \
+#         '^[OA' history-beginning-search-backward-end \
+#         '^[[B' history-beginning-search-forward-end  \
+#         '^[OB' history-beginning-search-forward-end
+# bindkey -M viins '^[[A' history-beginning-search-backward-end \
+#         '^[OA' history-beginning-search-backward-end \
+#         '^[[B' history-beginning-search-forward-end  \
+#         '^[OB' history-beginning-search-forward-end
+#
+
+bindkey '^[[A' history-beginning-search-backward-end \
         '^[OA' history-beginning-search-backward-end \
         '^[[B' history-beginning-search-forward-end  \
         '^[OB' history-beginning-search-forward-end
@@ -179,10 +182,6 @@ bindkey -M viins '^[[A' history-beginning-search-backward-end \
 bindkey -a '^[[3~' delete-char
 bindkey '^[[3~' delete-char
 bindkey "^?" backward-delete-char
-
-########
-# binds
-########
 
 # f5 para sudo !!
 # https://unix.stackexchange.com/questions/116562/key-bindings-table
@@ -198,12 +197,6 @@ bindkey -M vicmd v edit-command-line
 
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
-
-#######
-# theme
-#######
-
-source ~/.config/zsh/themes/tty.zsh
 
 #########
 # plugins
