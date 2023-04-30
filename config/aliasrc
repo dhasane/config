@@ -1,5 +1,13 @@
 #!/bin/sh
 
+
+# Path
+
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
+
+if [ -e "/home/$USER/.nix-profile/etc/profile.d/nix.sh" ]; then . "/home/$USER/.nix-profile/etc/profile.d/nix.sh"; fi
+
 # exports
 
 # ssh
