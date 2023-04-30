@@ -231,13 +231,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $window_movements (f) fullscreen toggle            , \
-        (l) layout toggle tabbed stacking,  \
-        (s) layout toggle split          ,  \
-        (h) split h                      ,  \
-        (v) split v                      ,  \
-        (p) focus parent
 bindsym $mod+Shift+p focus child
+
+set $window_movements (f) fullscreen toggle, (l) layout toggle tabbed stacking, (s) layout toggle split, (h) split h, (v) split v , (p) focus parent
 mode "window_movements" {
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
@@ -400,18 +396,22 @@ bindsym $mod+0 exec xlock -mode hop
 exec --no-startup-id xautolock -time 25 -locker "xlock -mode hop"
 exec --no-startup-id xss-lock
 
+
+
+exec --no-startup-id nm-applet
+
 # historial del clipboard
 # exec --no-startup-id CM_LAUNCHER=rofi
 
-exec "telegram-desktop"
-exec --no-startup-id  "sleep 2; i3-msg '[instance=telegram-desktop] move scratchpad'"
+# exec "telegram-desktop"
+# exec --no-startup-id  "sleep 2; i3-msg '[instance=telegram-desktop] move scratchpad'"
 
 # top-down terminal
 # podria ser interesante crearle su propia sesion para tmux
 # exec "st -e tmux new -A -s float"
 # exec --no-startup-id "echo $TERMINAL > ~/esto-es-una-prueba"
-exec "$TERMINAL -e tmux new -A -s float" 
-exec --no-startup-id "sleep 2 && i3-msg '[class=kitty] move scratchpad'" 
+# exec "$TERMINAL -e tmux new -A -s float" 
+# exec --no-startup-id "sleep 2 && i3-msg '[class=kitty] move scratchpad'" 
 # exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] mark stfloat, move scratchpad'"
 # exec --no-startup-id  "sleep 0,2; i3-msg '[instance=st] move scratchpad'"
 # exec --no-startup-id  "sleep 0,2; i3-msg '[class=kitty] move scratchpad'"
@@ -421,15 +421,15 @@ bindsym $mod+space exec sh ~/scripts/toggle-xkb.sh
 
 # scratchpad
 # bindsym $mod+Tab scratchpad show
-bindsym $mod+BackSpace move scratchpad
-bindsym $mod+bar [instance="telegram-desktop"] scratchpad show
+# bindsym $mod+BackSpace move scratchpad
+# bindsym $mod+bar [instance="telegram-desktop"] scratchpad show
 # bindsym $mod+less [con_mark="stfloat"] scratchpad show
 
 bindsym $mod+m exec "emacs"
 # bindsym $mod+m exec "emacsclient -c -a emacs --alternate-editor=''"
-bindsym $mod+greater [instance="emacs"] scratchpad show
+# bindsym $mod+greater [instance="emacs"] scratchpad show
 
 # poner una condicion para esto
-bindsym $mod+less [class="kitty"] scratchpad show 
+# bindsym $mod+less [class="kitty"] scratchpad show 
 # bindsym $mod+less [class="St"] scratchpad show
 # bindsym $mod+semicolon [class="St"] scratchpad show
