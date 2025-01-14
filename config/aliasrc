@@ -98,7 +98,9 @@ upd()
     then
         echo "actualizando Apt"
         upd_apt
-    elif exists nixos-rebuild
+    fi
+
+    if exists nixos-rebuild
     then
         echo actualizando Nixos
         upd_nixos
